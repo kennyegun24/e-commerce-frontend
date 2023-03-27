@@ -60,7 +60,7 @@ const Register = () => {
         <Input onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
         <Input onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' />
         <FormBtn onClick={registerUser}>Register</FormBtn>
-        {err && setTimeout(() => { setErr(null) }, 3000) && <span>{err}</span>}
+        {err && setTimeout(() => { setErr(null) }, 5000) && <span>{err}</span>}
         <P>Have an account? <Link to='/'>Login...</Link></P>
       </Form>
     </FormDiv>

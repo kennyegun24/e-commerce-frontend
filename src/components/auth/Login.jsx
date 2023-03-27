@@ -40,7 +40,7 @@ const Login = () => {
         <Input onChange={(e) => setEmail(e.target.value)} placeholder='Enter email' />
         <Input onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
         <FormBtn type='submit' onClick={loginUser}>Login</FormBtn>
-        {err && setTimeout(() => { setErr(null) }, 2500) && <span>{err}</span>}
+        {err && setTimeout(() => { setErr(null) }, 5000) && <span>{err}</span>}
         <P>Don't have an account? <Link to='register'>Register...</Link></P>
       </Form>
     </FormDiv>
