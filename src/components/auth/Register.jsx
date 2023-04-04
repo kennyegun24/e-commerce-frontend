@@ -10,6 +10,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [name, setName] = useState('')
   const [err, setErr] = useState(null)
+  const [success, setSuccess] = useState(null)
   const dispatch = useDispatch()
 
   const registerUser = async (e) => {
@@ -44,6 +45,7 @@ const Register = () => {
           password,
           name
         })
+        setSuccess('User created')
       } catch (err) {
         dispatch(loginFailure())
         setErr(err.response.data.message)
@@ -60,7 +62,8 @@ const Register = () => {
         <Input onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
         <Input onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' />
         <FormBtn onClick={registerUser}>Register</FormBtn>
-        {err && setTimeout(() => { setErr(null) }, 5000) && <span>{err}</span>}
+        {err && setTimeout(() => { setErr(null) }, 5000) && <span style={{ color: 'red', fontWeight: '600' }}>{err}</span>}
+        {success && setTimeout(() => { setSuccess(null) }, 5000) && <span style={{ color: 'green', fontWeight: '600' }}>{success}</span>}
         <P>Have an account? <Link to='/'>Login...</Link></P>
       </Form>
     </FormDiv>

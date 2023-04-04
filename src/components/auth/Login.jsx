@@ -8,6 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [err, setErr] = useState('')
+  const [success, setSuccess] = useState('')
   const dispatch = useDispatch()
 
   const loginUser = async (e) => {
@@ -27,6 +28,7 @@ const Login = () => {
         email,
         password
       })
+      setSuccess('User Logged in successfully')
     } catch (err) {
       dispatch(loginFailure)
       setErr(err.response.data.message)
@@ -40,7 +42,8 @@ const Login = () => {
         <Input onChange={(e) => setEmail(e.target.value)} placeholder='Enter email' />
         <Input onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
         <FormBtn type='submit' onClick={loginUser}>Login</FormBtn>
-        {err && setTimeout(() => { setErr(null) }, 5000) && <span>{err}</span>}
+        {err && setTimeout(() => { setErr(null) }, 5000) && <span style={{ color: 'red', fontWeight: '600' }}>{err}</span>}
+        {success && setTimeout(() => { setSuccess(null) }, 5000) && <span style={{ color: 'green', fontWeight: '600' }}>{success}</span>}
         <P>Don't have an account? <Link to='register'>Register...</Link></P>
       </Form>
     </FormDiv>
