@@ -16,7 +16,7 @@ const Home = () => {
     dispatch(getCategory())
     dispatch(getStores())
     dispatch(getAllProducts())
-  })
+  }, [])
 
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(20)
