@@ -1,0 +1,87 @@
+.redSlash {
+    color: rgb(241, 55, 55);
+    text-decoration: line-through;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.detailsPage {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2%;
+    gap: 2%;
+    align-items: center;
+}
+
+.detailsDvImg {
+    flex-basis: 50%;
+    height: 70vh;
+}
+
+.detailsDvImg>img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.detailsDvDtl {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detailsSize>span {
+    border: 1px solid #111;
+    padding: 0.3rem 1rem;
+    width: fit-content;
+}
+
+.detailsSize,
+.detailsDesc,
+.detailsCategory {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+.detailsPrice {
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+}
+
+.addCart {
+    width: fit-content;
+    background: #160f33;
+    padding: 0.5rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.increment {
+    border: 1px solid #111;
+    width: fit-content;
+    /* padding: 0.5rem; */
+    font-size: 20px;
+}
+
+.addMinus {
+    border: 1px solid #111;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.center {
+    display: flex;
+    height: calc(100vh - 150px);
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: grey;
+}
