@@ -41,9 +41,11 @@ const Register = () => {
     else {
       try {
         await register(dispatch, {
-          email,
-          password,
-          name
+          user: {
+            email,
+            password,
+            name
+          }
         })
         setSuccess('User created')
       } catch (err) {
