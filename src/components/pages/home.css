@@ -144,6 +144,20 @@
   transition: 1s linear ease-in-out;
 }
 
+.rotate {
+  animation: roll 2s infinite;
+}
+
+@keyframes roll {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
 @media (max-width: 500px) {
   /* .subProductsDiv {
     display: grid;

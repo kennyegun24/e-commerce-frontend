@@ -10,18 +10,6 @@ import { useLocation } from 'react-router-dom'
 const Details = () => {
   const locate = useLocation()
   const { state } = locate
-  const [mapState, setMapState] = useState(null)
-  // if (state.state.length === undefined) {
-  // console.log(state)
-  // } else {
-  //     setMapState(state.state)
-  // }
-  // console.log(state.state)
-  // const { _product } = useSelector(state => state.product)
-  // const dispatch = useDispatch()
-  // const toJson = JSON.parse(_product)
-  // console.log(toJson.id)
-  // console.log(JSON.parse(_product).id)
 
   useEffect(() => {
     // dispatch(getProduct(toJson.id))

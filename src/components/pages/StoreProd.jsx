@@ -7,11 +7,10 @@ const StoreProd = () => {
   const location = useLocation()
   const { state } = location
   const { pathname } = location
-  console.log(state)
+  // console.log(state)
   return (
     <div>
-
-      {state.length > 0 && <h2 className='fntLg'>{state[0].store.store_name} store</h2>}
+      {state.length > 0 && <h2 className='fntLg'>{state[0].store.store_name}</h2>}
       {state.length > 0 ?
         (<Row gutters={[32, 32]} className='rand'>
           {
@@ -34,6 +33,7 @@ const StoreProd = () => {
           }
         </Row>) : <p className="center"><FaHourglass />No product in this store</p>}
     </div>
+
   )
 }
 
