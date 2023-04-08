@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate, useNavigation } from 'react-router-dom'
 import { FaShoppingCart } from 'react-icons/fa'
 import './nav.css'
-// import { loadCart } from '../../redux/cart/cart'
+import { loginSuccess } from '../../redux/user/user'
 const Nav = () => {
   const { products } = useSelector(state => state.cart)
-  // const { currentUser } = useSelector(state => state.user)
+  const { currentUser } = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const logout = () => {
+    dispatch(loginSuccess(null))
+  }
+  const login = () => {
+    navigate('/login')
+  }
 
-  // const dispatch = useDispatch()
-  useEffect(() => {
-    // currentUser ? dispatch(loadCart({ currentUser: currentUser.data.token })) : dispatch(loadCart({ currentUser: null }))
-  }, [])
   return (
     <>
       <header className='navHeader'>
@@ -48,12 +52,11 @@ const Nav = () => {
             <NavLink className='navLink' to='/categories'>Categories</NavLink>
             <NavLink to='/stores' className='navLink'>Stores</NavLink>
             <li>About us</li>
-            <li>Smartphones</li>
-            <li>Laptops</li>
+            <NavLink style={{ color: 'black', textDecoration: 'none' }} onClick={() => currentUser && logout()} to={!currentUser && '/login'}>{currentUser ? 'Logout' : 'Login'}</NavLink>
             <li>Fashion</li>
           </ul>
         </nav>
-      </header>
+      </header >
     </>
   )
 }
