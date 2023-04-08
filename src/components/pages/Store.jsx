@@ -8,7 +8,6 @@ import { FaHourglass } from 'react-icons/fa'
 const Store = () => {
   const dispatch = useDispatch()
   const { allStores } = useSelector((state) => state.store)
-  // console.log(allStores)
   useEffect(() => {
     dispatch(getAllStores())
   }, [])

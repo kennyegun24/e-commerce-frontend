@@ -4,17 +4,11 @@ import { FaPlus, FaMinus } from 'react-icons/fa'
 import './details.css'
 import { itemAdded } from '../../redux/cart/cart'
 import { v4 as uuid } from 'uuid'
-import { getProduct } from '../../redux/product/product'
 import { useLocation } from 'react-router-dom'
 
 const Details = () => {
   const locate = useLocation()
   const { state } = locate
-
-  useEffect(() => {
-    // dispatch(getProduct(toJson.id))
-  }, [])
-  // const { currentUser } = useSelector(state => state.user)
   const [quantity, setNumOfOrder] = useState(1)
   const dispatch = useDispatch()
   const increase = () => {
@@ -24,8 +18,7 @@ const Details = () => {
     { quantity > 1 && setNumOfOrder(quantity - 1) }
   }
   const addItem = () => {
-    // dispatch(itemAdded({ currentUser: currentUser.data.token, id: uuid(), product, quantity, price: state.price * quantity }))
-    dispatch(itemAdded({ id: uuid(), product: state, quantity, price: state.price * quantity }))
+    dispatch(itemAdded({ id: uuid(), product: { state, price: state.price * quantity }, quantity, price: state.price * quantity }))
   }
 
   return (

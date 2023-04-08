@@ -7,7 +7,6 @@ const StoreProd = () => {
   const location = useLocation()
   const { state } = location
   const { pathname } = location
-  // console.log(state)
   return (
     <div>
       {state.length > 0 && <h2 className='fntLg'>{state[0].store.store_name}</h2>}

@@ -6,7 +6,6 @@ const CategoriesProds = () => {
   const location = useLocation()
   const { state } = location
   const { pathname } = location
-  console.log(state[0].category.name)
   return (
     <div>
       {state.length > 0 && <h2 className='fntLg'>{state[0].category.name} category</h2>}
