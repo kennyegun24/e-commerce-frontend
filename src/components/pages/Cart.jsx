@@ -2,27 +2,12 @@ import React from 'react'
 import { FaTrash } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-// import { productLoaded } from '../../redux/product/product'
 import { deleteCart, itemAdded, loadCart } from '../../redux/cart/cart'
 import './cart.css'
 
 const Cart = () => {
   const product = useSelector(state => state.cart)
-  // const { currentUser } = useSelector(state => state.user)
   const dispatch = useDispatch()
-  // const select = (item) => {
-  //   // dispatch(productLoaded(item))
-  // }
-
-  // const deleteCartItem = (id) => {
-  //   const getStore = JSON.parse(localStorage.getItem(`setKennyStoreItemsInStorage${currentUser.data.token}`));
-  //   if (getStore) {
-  //     const updatedStore = getStore.filter(item => item.id !== id);
-  //     localStorage.setItem(`setKennyStoreItemsInStorage${currentUser.data.token}`, JSON.stringify(updatedStore));
-  //     dispatch(loadCart({ currentUser: currentUser.data.token }));
-  //     return updatedStore;
-  //   }
-  // };
   const deleteCartItem = (id, price) => {
     dispatch(deleteCart({ id, price }))
   }
@@ -33,14 +18,14 @@ const Cart = () => {
           {product.products.map((cart) => {
             return (
               <div className='cartDisplay' key={cart.id} >
-                <NavLink state={cart.product} to={`/product/${cart.product.id}`} className='flexCart'>
-                  <img src={cart.product.image} style={{ borderRadius: '12px', height: '75px', width: '75px' }} alt="" />
+                <NavLink state={cart.product.state} to={`/product/${cart.product.state.id}`} className='flexCart'>
+                  <img src={cart.product.state.image} style={{ borderRadius: '12px', height: '75px', width: '75px' }} alt="" />
                   <div>
                     <h3>
-                      {cart.product.name}
+                      {cart.product.state.name}
                     </h3>
                     <p>
-                      {cart.product.name}
+                      {cart.product.state.name}
                     </p>
                   </div>
                 </NavLink>
@@ -50,17 +35,17 @@ const Cart = () => {
                     {cart.quantity}
                   </p>
                   <p>
-                    {cart.product.color}
+                    {cart.product.state.color}
                   </p>
                 </div>
 
                 <div>
                   <p>
-                    ${cart.product.price}
+                    ${cart.price}
                   </p>
                 </div>
 
-                <FaTrash onClick={() => deleteCartItem(cart.id, cart.product.price * cart.quantity)} />
+                <FaTrash onClick={() => deleteCartItem(cart.id, cart.product.state.price * cart.quantity)} />
               </div>
             )
           })}

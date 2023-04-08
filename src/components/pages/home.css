@@ -80,12 +80,16 @@
 }
 
 .productsDiv {
-  margin: 10px;
   /* border: 1px solid #cfcbcb; */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   flex-direction: column;
+  flex: 1;
+}
+
+.productsDivs {
+  margin: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   padding: 0.5rem 0;
 }
 
@@ -146,6 +150,22 @@
 
 .rotate {
   animation: roll 2s infinite;
+}
+
+.addCartButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.cartAddRedButtons {
+  display: flex;
+  width: 25%;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @keyframes roll {
