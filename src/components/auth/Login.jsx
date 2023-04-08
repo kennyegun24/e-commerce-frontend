@@ -39,8 +39,8 @@ const Login = () => {
     <FormDiv>
       <Form>
         <H1>Login to your account</H1>
-        <Input onChange={(e) => setEmail(e.target.value)} placeholder='Enter email' />
-        <Input onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
+        <Input type='email' onChange={(e) => setEmail(e.target.value)} placeholder='Enter email' />
+        <Input type='password' onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
         <FormBtn type='submit' onClick={loginUser}>Login</FormBtn>
         {err && setTimeout(() => { setErr(null) }, 5000) && <span style={{ color: 'red', fontWeight: '600' }}>{err}</span>}
         {success && setTimeout(() => { setSuccess(null) }, 5000) && <span style={{ color: 'green', fontWeight: '600' }}>{success}</span>}

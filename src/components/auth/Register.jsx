@@ -59,10 +59,10 @@ const Register = () => {
     <FormDiv>
       <Form>
         <H1>Create an account</H1>
-        <Input onChange={(e) => setName(e.target.value)} placeholder='Enter name' />
-        <Input onChange={(e) => setEmail(e.target.value)} placeholder='Enter email' />
-        <Input onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
-        <Input onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' />
+        <Input type='text' onChange={(e) => setName(e.target.value)} placeholder='Enter name' />
+        <Input type='email' onChange={(e) => setEmail(e.target.value)} placeholder='Enter email' />
+        <Input type='password' onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
+        <Input type='password' onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' />
         <FormBtn onClick={registerUser}>Register</FormBtn>
         {err && setTimeout(() => { setErr(null) }, 5000) && <span style={{ color: 'red', fontWeight: '600' }}>{err}</span>}
         {success && setTimeout(() => { setSuccess(null) }, 5000) && <span style={{ color: 'green', fontWeight: '600' }}>{success}</span>}
