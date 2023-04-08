@@ -18,41 +18,24 @@ const App = () => {
 
   return (
     <div className="app">
-      {/* {currentUser */}
-      {/* <div className='fixPositionNav'>
+
+      <div className='fixPositionNav'>
         <Nav />
-      </div> */}
-      {/* } */}
+      </div>
 
-      {/* <div className='routes'>
+      <div className='routes'>
         <Routes>
+          <Route path='/register' element={!currentUser ? <Register /> : <Navigate to='/' />} />
+          <Route path='/login' element={!currentUser ? <Login /> : <Navigate to='/' />} />
           <Route path='/' element={<Home />} />
-          <Route path='/categories/:id/products' element={<CategoriesProds />} />
           <Route path='/product/:id' element={<Details />} />
-          <Route path='/categories/:id/products/:id' element={<Details />} />
-          <Route path='/categories' element={<Categories />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/cart' element={currentUser ? <Cart /> : <Navigate to='/login' />} />
           <Route path='/stores' element={<Store />} />
-        </Routes>
-      </div> */}
-      {currentUser
-        && <div className='fixPositionNav'>
-          <Nav />
-        </div>
-      }
-
-      <div className={currentUser ? 'routes' : 'regRoute'}>
-        <Routes>
-          <Route path='/register' element={currentUser ? <Navigate to='/' /> : <Register />} />
-          <Route path='/' element={currentUser ? <Home /> : <Login />} />
-          <Route path='/product/:id' element={currentUser ? <Details /> : <Navigate to='/' />} />
-          <Route path='/cart' element={currentUser ? <Cart /> : <Navigate to='/' />} />
-          <Route path='/stores' element={currentUser ? <Store /> : <Navigate to='/' />} />
-          <Route path='/categories' element={currentUser ? <Categories /> : <Navigate to='/' />} />
-          <Route path='/categories/:id/products/:id' element={currentUser ? <Details /> : <Navigate to='/' />} />
-          <Route path='/store/:id/products/:id' element={currentUser ? <Details /> : <Navigate to='/' />} />
-          <Route path='/categories/:id/products' element={currentUser ? <CategoriesProds /> : <Navigate to='/' />} />
-          <Route path='/store/:id/products' element={currentUser ? <StoreProd /> : <Navigate to='/' />} />
+          <Route path='/categories' element={<Categories />} />
+          <Route path='/categories/:id/products/:id' element={<Details />} />
+          <Route path='/store/:id/products/:id' element={<Details />} />
+          <Route path='/categories/:id/products' element={<CategoriesProds />} />
+          <Route path='/store/:id/products' element={<StoreProd />} />
         </Routes>
       </div>
     </div>
