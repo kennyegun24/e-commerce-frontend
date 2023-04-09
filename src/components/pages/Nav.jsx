@@ -9,7 +9,7 @@ const Nav = () => {
   const { products } = useSelector(state => state.cart)
   const { currentUser } = useSelector(state => state.user)
 
-  const { checkInput, handleSearch } = useSearch()
+  const { checkInput, handleSearch, getMax, getMin } = useSearch()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const logout = () => {
@@ -40,7 +40,8 @@ const Nav = () => {
 
           <form onSubmit={() => handleSearch()}>
             <input type='search' className='search' onChange={checkInput} />
-
+            <input type="number" onChange={getMin} placeholder='Min Price' />
+            <input type="number" onChange={getMax} placeholder='Max Price' />
           </form>
 
           <Link to='/cart' className='navCart'>
