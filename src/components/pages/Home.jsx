@@ -15,7 +15,7 @@ const Home = () => {
   const store = useSelector(state => state.store)
   const { products } = useSelector((prod) => prod.product)
   const { category } = useSelector((prod) => prod.category)
-  const { search } = useSelector((state) => state.search)
+  const { search, minVal, maxVal } = useSelector((state) => state.search)
 
   useEffect(() => {
     dispatch(getCategory())
@@ -23,10 +23,9 @@ const Home = () => {
     dispatch(getAllProducts())
   }, [])
 
-  // console.log(search)
-
   const [quantities, setQuantities] = useState([])
 
+  // Set quantities identify each products and give them separate counters
   useEffect(() => {
     if (products.length > 0) {
       setQuantities(products.map(() => 1));
@@ -34,7 +33,7 @@ const Home = () => {
   }, [products]);
 
   const [quantity, setQuantity] = useState(0)
-
+  // Increase counter
   const increase = (index) => {
     setQuantities(prevQuantities => {
       const newQuantities = [...prevQuantities];
@@ -44,7 +43,7 @@ const Home = () => {
       return newQuantities;
     });
   }
-
+  // Decrease counter
   const decrease = (index) => {
     if (quantities[index] > 1) {
       setQuantities(prevQuantities => {
@@ -59,9 +58,11 @@ const Home = () => {
     // { quantities > 1 && setQuantities(quantities - 1) }
   }
 
+  // clear search input
   const clear = () => {
     dispatch(searchInp(''))
   }
+
   return (
     <div className='homeMainDiv'>
       {products.length < 1 ?
@@ -94,9 +95,9 @@ const Home = () => {
             <div className='subProductsDiv'>
               <Row gutters={[32, 32]} className='rand'>
                 {
-                  products.filter((e) => e.name.toLowerCase().includes(search.toLowerCase())).map((prod, index) => {
+                  products.filter((e) => maxVal != '' ? (parseInt(e.price) >= minVal && parseInt(e.price) <= maxVal) : (parseInt(e.price) >= 0 && parseInt(e.price) <= 10000000)).filter((e) => e.name.toLowerCase().includes(search.toLowerCase())).map((prod, index) => {
+                    console.log(maxVal)
                     const state = prod
-
                     const addItem = () => {
                       dispatch(itemAdded({ id: uuid(), product: { state, price: prod.price * quantity }, quantity, price: prod.price * quantity }))
                     }
