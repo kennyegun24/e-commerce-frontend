@@ -9,29 +9,32 @@ import { getCategory } from '../../redux/category/category';
 import { FaHourglass, FaPlus, FaMinus } from 'react-icons/fa'
 import { itemAdded } from '../../redux/cart/cart'
 import { v4 as uuid } from 'uuid'
+import { searchInp } from "../../redux/search"
 const Home = () => {
   const dispatch = useDispatch()
   const store = useSelector(state => state.store)
   const { products } = useSelector((prod) => prod.product)
   const { category } = useSelector((prod) => prod.category)
+  const { search } = useSelector((state) => state.search)
 
   useEffect(() => {
     dispatch(getCategory())
     dispatch(getStores())
     dispatch(getAllProducts())
   }, [])
-  const [currentPage, setCurrentPage] = useState(1)
-  const [itemsPerPage, setItemsPerPage] = useState(15)
-  const lastIndex = currentPage * itemsPerPage
-  const firstIndex = lastIndex - itemsPerPage
-  let currentItems = products.slice(firstIndex, lastIndex)
+
+  // console.log(search)
+
   const [quantities, setQuantities] = useState([])
+
   useEffect(() => {
     if (products.length > 0) {
       setQuantities(products.map(() => 1));
     }
   }, [products]);
+
   const [quantity, setQuantity] = useState(0)
+
   const increase = (index) => {
     setQuantities(prevQuantities => {
       const newQuantities = [...prevQuantities];
@@ -41,6 +44,7 @@ const Home = () => {
       return newQuantities;
     });
   }
+
   const decrease = (index) => {
     if (quantities[index] > 1) {
       setQuantities(prevQuantities => {
@@ -53,6 +57,10 @@ const Home = () => {
       return false
     }
     // { quantities > 1 && setQuantities(quantities - 1) }
+  }
+
+  const clear = () => {
+    dispatch(searchInp(''))
   }
   return (
     <div className='homeMainDiv'>
@@ -86,7 +94,7 @@ const Home = () => {
             <div className='subProductsDiv'>
               <Row gutters={[32, 32]} className='rand'>
                 {
-                  currentItems.map((prod, index) => {
+                  products.filter((e) => e.name.toLowerCase().includes(search.toLowerCase())).map((prod, index) => {
                     const state = prod
 
                     const addItem = () => {
@@ -95,7 +103,7 @@ const Home = () => {
                     return (
                       <Col xs={24} sm={12} lg={6} key={prod.id}>
                         <div className='productsDivs'>
-                          <NavLink state={prod} to={`/product/${prod.id}`} className='productsDiv' >
+                          <NavLink state={prod} onClick={() => clear()} to={`/product/${prod.id}`} className='productsDiv' >
                             <div className='prodLilImg'>
                               <img className='prodImg' src={prod.image} alt="" />
                             </div>
@@ -127,14 +135,6 @@ const Home = () => {
                   })
                 }
               </Row>
-            </div>
-            <div className='nextPrev'>
-              {currentPage > 1 && (
-                <button onClick={() => setCurrentPage(currentPage - 1)}>...Previous</button>
-              )}
-              {currentPage < Math.ceil(products.length / itemsPerPage) && (
-                <button onClick={() => setCurrentPage(currentPage + 1)}>Next</button>
-              )}
             </div>
           </div>
 
