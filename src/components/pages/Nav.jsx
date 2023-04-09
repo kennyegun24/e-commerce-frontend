@@ -4,16 +4,16 @@ import { Link, NavLink, useNavigate, useNavigation } from 'react-router-dom'
 import { FaShoppingCart } from 'react-icons/fa'
 import './nav.css'
 import { loginSuccess } from '../../redux/user/user'
+import useSearch from '../cutomHook/useSearch'
 const Nav = () => {
   const { products } = useSelector(state => state.cart)
   const { currentUser } = useSelector(state => state.user)
+
+  const { checkInput, handleSearch } = useSearch()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const logout = () => {
     dispatch(loginSuccess(null))
-  }
-  const login = () => {
-    navigate('/login')
   }
 
   return (
@@ -38,7 +38,10 @@ const Nav = () => {
             Shopping Spree
           </h1>
 
-          <input type='search' className='search' />
+          <form onSubmit={() => handleSearch()}>
+            <input type='search' className='search' onChange={checkInput} />
+
+          </form>
 
           <Link to='/cart' className='navCart'>
             <FaShoppingCart className='cartIcon' />
