@@ -41,8 +41,18 @@ const Home = () => {
       return newQuantities;
     });
   }
-  const decrease = () => {
-    { quantity > 1 && setQuantities(quantity - 1) }
+  const decrease = (index) => {
+    if (quantities[index] > 1) {
+      setQuantities(prevQuantities => {
+        const newQuantities = [...prevQuantities];
+        setQuantity(quantities[index] - 1)
+        newQuantities[index]--;
+        console.log(quantities[index] - 1)
+        return newQuantities;
+      });
+      return false
+    }
+    // { quantities > 1 && setQuantities(quantities - 1) }
   }
   return (
     <div className='homeMainDiv'>
@@ -101,7 +111,7 @@ const Home = () => {
                           <div className='addCartButton'>
                             <div className='cartAddRedButtons'>
                               <button className='addMinus'>
-                                <FaMinus className='' onClick={decrease} />
+                                <FaMinus className='' onClick={() => decrease(index)} />
                               </button>
                               <span>{quantities[index]}</span>
                               <button className='addMinus'>
