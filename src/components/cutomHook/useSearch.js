@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { searchInp } from "../../redux/search"
+import { getMaxVal, getMinVal, searchInp } from "../../redux/search"
 
 const useSearch = () => {
     const [searchInput, setSearchInput] = useState('')
@@ -26,12 +26,19 @@ const useSearch = () => {
 
     useEffect(() => {
         dispatch(searchInp(searchInput))
-    }, [searchInput])
+
+        if (maxNum >= minNum) {
+            dispatch(getMinVal(minNum))
+            dispatch(getMaxVal(maxNum))
+        }
+    }, [searchInput, minNum, maxNum])
 
     return {
         checkInput,
         handleSearch,
-        searchInput
+        searchInput,
+        getMax,
+        getMin
     }
 }
 
