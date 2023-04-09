@@ -25,12 +25,24 @@ const Home = () => {
   const lastIndex = currentPage * itemsPerPage
   const firstIndex = lastIndex - itemsPerPage
   let currentItems = products.slice(firstIndex, lastIndex)
-  const [quantity, setNumOfOrder] = useState(1)
-  const increase = () => {
-    setNumOfOrder(quantity + 1)
+  const [quantities, setQuantities] = useState([])
+  useEffect(() => {
+    if (products.length > 0) {
+      setQuantities(products.map(() => 1));
+    }
+  }, [products]);
+  const [quantity, setQuantity] = useState(0)
+  const increase = (index) => {
+    setQuantities(prevQuantities => {
+      const newQuantities = [...prevQuantities];
+      setQuantity(quantities[index] + 1)
+      newQuantities[index]++;
+      console.log(quantities[index] + 1)
+      return newQuantities;
+    });
   }
   const decrease = () => {
-    { quantity > 1 && setNumOfOrder(quantity - 1) }
+    { quantity > 1 && setQuantities(quantity - 1) }
   }
   return (
     <div className='homeMainDiv'>
@@ -64,7 +76,7 @@ const Home = () => {
             <div className='subProductsDiv'>
               <Row gutters={[32, 32]} className='rand'>
                 {
-                  currentItems.map((prod) => {
+                  currentItems.map((prod, index) => {
                     const state = prod
 
                     const addItem = () => {
@@ -91,9 +103,9 @@ const Home = () => {
                               <button className='addMinus'>
                                 <FaMinus className='' onClick={decrease} />
                               </button>
-                              <span>{quantity}</span>
+                              <span>{quantities[index]}</span>
                               <button className='addMinus'>
-                                <FaPlus className='' onClick={increase} />
+                                <FaPlus className='' onClick={() => increase(index)} />
                               </button>
                             </div>
                             <button onClick={addItem} type="button" className='addCart'>Add to cart</button>
