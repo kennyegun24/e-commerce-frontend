@@ -1,0 +1,44 @@
+.loginForm {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    padding: 1rem;
+    border-radius: 1rem;
+    gap: 1rem;
+    padding: 3rem;
+}
+
+.loginBtn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 0.5rem;
+    border: none;
+    font-size: 14px;
+    color: #F5F5DC;
+    margin-top: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.loginInput {
+    width: 100%;
+    /* border: none; */
+    /* border-bottom: 1px solid black; */
+    padding: 0.5rem 1.8rem;
+    background: #fff;
+    border-radius: 0.5rem;
+}
+
+.emailDiv {
+    position: relative;
+    width: 100%;
+}
+
+.mailLock {
+    position: absolute;
+    left: 2%;
+    top: 25%;
+    color: #667eea;
+    font-size: 18px;
+}

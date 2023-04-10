@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useNavigate, useNavigation } from 'react-router-dom'
-import { FaShoppingCart } from 'react-icons/fa'
+import { FaSearch, FaShoppingCart } from 'react-icons/fa'
 import './nav.css'
 import { loginSuccess } from '../../redux/user/user'
 import useSearch from '../cutomHook/useSearch'
@@ -38,8 +38,8 @@ const Nav = () => {
             Shopping Spree
           </h1>
 
-          <form onSubmit={() => handleSearch()}>
-            <input type='search' className='search' onChange={checkInput} />
+          <form >
+            <input type='search' className='search' placeholder='Search for items based on name' onChange={checkInput} /> <button type='submit' onClick={handleSearch}><FaSearch /></button>
             <input type="number" onChange={getMin} placeholder='Min Price' />
             <input type="number" onChange={getMax} placeholder='Max Price' />
           </form>
