@@ -11,7 +11,6 @@ const Categories = () => {
   useEffect(() => {
     dispatch(getAllCategories())
   }, [])
-  console.log(categories.map(hey => hey.product.map(hey => hey)))
   return (
     <div>
       {categories.length < 1 ?
