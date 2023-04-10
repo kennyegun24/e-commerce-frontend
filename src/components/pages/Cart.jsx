@@ -15,40 +15,43 @@ const Cart = () => {
     <div className='cart'>
       <div className="cartDetailDiv">
         <div className='cartDisplaySmDv'>
-          {product.products.map((cart) => {
-            return (
-              <div className='cartDisplay' key={cart.id} >
-                <NavLink state={cart.product.state} to={`/product/${cart.product.state.id}`} className='flexCart'>
-                  <img src={cart.product.state.image} style={{ borderRadius: '12px', height: '75px', width: '75px' }} alt="" />
+
+          {product.products.length < 1 ? <p>Cart is empty</p> :
+            (product.products.map((cart) => {
+              return (
+                <div className='cartDisplay' key={cart.id} >
+                  <NavLink state={cart.product.state} to={`/product/${cart.product.state.id}`} className='flexCart'>
+                    <img src={cart.product.state.image} style={{ borderRadius: '12px', height: '75px', width: '75px' }} alt="" />
+                    <div>
+                      <h3>
+                        {cart.product.state.name}
+                      </h3>
+                      <p>
+                        {cart.product.state.name}
+                      </p>
+                    </div>
+                  </NavLink>
+
                   <div>
-                    <h3>
-                      {cart.product.state.name}
-                    </h3>
                     <p>
-                      {cart.product.state.name}
+                      {cart.quantity}
+                    </p>
+                    <p>
+                      {cart.product.state.color}
                     </p>
                   </div>
-                </NavLink>
 
-                <div>
-                  <p>
-                    {cart.quantity}
-                  </p>
-                  <p>
-                    {cart.product.state.color}
-                  </p>
+                  <div>
+                    <p>
+                      ${cart.price}
+                    </p>
+                  </div>
+
+                  <FaTrash onClick={() => deleteCartItem(cart.id, cart.product.state.price * cart.quantity)} />
                 </div>
-
-                <div>
-                  <p>
-                    ${cart.price}
-                  </p>
-                </div>
-
-                <FaTrash onClick={() => deleteCartItem(cart.id, cart.product.state.price * cart.quantity)} />
-              </div>
-            )
-          })}
+              )
+            }))
+          }
         </div>
         <div className='checkout'>
           <h2 style={{ textAlign: 'center' }}>Payment Details</h2>
