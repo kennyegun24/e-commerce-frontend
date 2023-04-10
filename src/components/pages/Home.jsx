@@ -32,14 +32,13 @@ const Home = () => {
     }
   }, [products]);
 
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
   // Increase counter
   const increase = (index) => {
     setQuantities(prevQuantities => {
       const newQuantities = [...prevQuantities];
       setQuantity(quantities[index] + 1)
       newQuantities[index]++;
-      console.log(quantities[index] + 1)
       return newQuantities;
     });
   }
@@ -50,7 +49,6 @@ const Home = () => {
         const newQuantities = [...prevQuantities];
         setQuantity(quantities[index] - 1)
         newQuantities[index]--;
-        console.log(quantities[index] - 1)
         return newQuantities;
       });
       return false
@@ -95,8 +93,7 @@ const Home = () => {
             <div className='subProductsDiv'>
               <Row gutters={[32, 32]} className='rand'>
                 {
-                  products.filter((e) => maxVal != '' ? (parseInt(e.price) >= minVal && parseInt(e.price) <= maxVal) : (parseInt(e.price) >= 0 && parseInt(e.price) <= 10000000)).filter((e) => e.name.toLowerCase().includes(search.toLowerCase())).map((prod, index) => {
-                    console.log(maxVal)
+                  products.filter((e) => maxVal != '' ? (parseInt(e.price) >= minVal && parseInt(e.price) <= maxVal) : (parseInt(e.price) >= minVal && parseInt(e.price) <= 10000000)).filter((e) => e.name.toLowerCase().includes(search.toLowerCase())).map((prod, index) => {
                     const state = prod
                     const addItem = () => {
                       dispatch(itemAdded({ id: uuid(), product: { state, price: prod.price * quantity }, quantity, price: prod.price * quantity }))
@@ -119,12 +116,12 @@ const Home = () => {
 
                           <div className='addCartButton'>
                             <div className='cartAddRedButtons'>
-                              <button className='addMinus'>
-                                <FaMinus className='' onClick={() => decrease(index)} />
+                              <button onClick={() => decrease(index)} className='addMinus'>
+                                <FaMinus className='' />
                               </button>
                               <span>{quantities[index]}</span>
-                              <button className='addMinus'>
-                                <FaPlus className='' onClick={() => increase(index)} />
+                              <button onClick={() => increase(index)} className='addMinus'>
+                                <FaPlus className='' />
                               </button>
                             </div>
                             <button onClick={addItem} type="button" className='addCart'>Add to cart</button>
