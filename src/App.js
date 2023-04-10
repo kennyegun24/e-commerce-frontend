@@ -8,10 +8,8 @@ import Home from './components/pages/Home';
 import Details from './components/pages/Details';
 import Cart from './components/pages/Cart';
 import Categories from './components/pages/Categories';
-import CategoriesProds from './components/pages/CategoriesProds';
 import Store from './components/pages/Store';
 import StoreProd from './components/pages/StoreProd';
-
 
 const App = () => {
   const { currentUser } = useSelector(state => state.user)
@@ -34,8 +32,8 @@ const App = () => {
           <Route path='/categories' element={<Categories />} />
           <Route path='/categories/:id/products/:id' element={<Details />} />
           <Route path='/store/:id/products/:id' element={<Details />} />
-          <Route path='/categories/:id/products' element={<CategoriesProds />} />
           <Route path='/store/:id/products' element={<StoreProd />} />
+          <Route path='/categories/:id/products' element={<StoreProd />} />
         </Routes>
       </div>
     </div>
