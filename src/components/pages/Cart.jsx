@@ -16,7 +16,7 @@ const Cart = () => {
       <div className="cartDetailDiv">
         <div className='cartDisplaySmDv'>
 
-          {product.products.length < 1 ? <p>Cart is empty</p> :
+          {product.products.length < 1 ? <p className='center'>Cart is empty</p> :
             (product.products.map((cart) => {
               return (
                 <div className='cartDisplay' key={cart.id} >
