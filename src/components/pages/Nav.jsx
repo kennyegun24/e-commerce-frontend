@@ -35,7 +35,9 @@ const Nav = () => {
 
         <nav className='mainHead'>
           <h1>
-            Shopping Spree
+            <Link to='/' style={{ textDecoration: 'none', color: '#fff' }}>
+              Shopping Spree
+            </Link>
           </h1>
 
           <form >
