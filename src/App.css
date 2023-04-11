@@ -5,3 +5,23 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.fixPositionNav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.regRoute {
+  margin-top: 0;
+}
+
+.routes {
+  margin-top: 150px;
+}
