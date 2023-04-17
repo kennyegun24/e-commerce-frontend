@@ -22,34 +22,36 @@ const Nav = () => {
         <nav className='navHead'>
           <nav>
             <h5>E-shopping</h5>
-
-            <h6>spree</h6>
           </nav>
 
           <nav>
-            <h6>spree</h6>
 
             <h6>#NGN</h6>
           </nav>
         </nav>
 
         <nav className='mainHead'>
-          <h1>
-            <Link to='/' style={{ textDecoration: 'none', color: '#fff' }}>
-              Shopping Spree
+          <div>
+            <h1>
+              <Link to='/' style={{ textDecoration: 'none', color: '#fff' }}>
+                Shopping Spree
+              </Link>
+            </h1>
+
+            <Link to='/cart' className='navCart'>
+              <FaShoppingCart className='cartIcon' />
+              {products.length > 0 && <p>{products.length}</p>}
             </Link>
-          </h1>
+          </div>
 
-          <form >
-            <input type='search' className='search' placeholder='Search for items based on name' onChange={checkInput} /> <button type='submit' onClick={handleSearch}><FaSearch /></button>
-            <input type="number" onChange={getMin} placeholder='Min Price' />
-            <input type="number" onChange={getMax} placeholder='Max Price' />
+          <form className='searchForm'>
+            <input type='search' className='search' placeholder='Search for items based on name' onChange={checkInput} />
+            <div>
+              <p>Filters:</p>
+              <input type="number" onChange={getMin} placeholder='Min Price' />
+              <input type="number" onChange={getMax} placeholder='Max Price' />
+            </div>
           </form>
-
-          <Link to='/cart' className='navCart'>
-            <FaShoppingCart className='cartIcon' />
-            {products.length > 0 && <p>{products.length}</p>}
-          </Link>
         </nav>
 
         <nav className='navOptions'>
@@ -58,7 +60,7 @@ const Nav = () => {
             <NavLink className='navLink' to='/categories'>Categories</NavLink>
             <NavLink to='/stores' className='navLink'>Stores</NavLink>
             <li>About us</li>
-            <NavLink style={{ color: 'black', textDecoration: 'none' }} onClick={() => currentUser && logout()} to={!currentUser && '/login'}>{currentUser ? 'Logout' : 'Login'}</NavLink>
+            <NavLink style={{ color: '#fff', textDecoration: 'none' }} onClick={() => currentUser && logout()} to={!currentUser && '/login'}>{currentUser ? 'Logout' : 'Login'}</NavLink>
             <li>Fashion</li>
           </ul>
         </nav>
