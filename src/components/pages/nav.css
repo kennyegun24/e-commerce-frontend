@@ -1,7 +1,12 @@
 .navHeader {
     width: 100%;
-    background: #0b123f;
+    /* background: #0b123f; */
+    background: #f13a3a;
     font-family: 'Inter', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
 }
 
 .navHead {
@@ -10,6 +15,8 @@
     padding: 5px 5%;
     align-items: center;
     width: 100%;
+    height: 10%;
+    border-bottom: 2px solid #fc1d1d;
 }
 
 .navHead>nav {
@@ -22,48 +29,72 @@
 
 .mainHead {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 20px 5%;
     color: #fff;
-    align-items: center;
     background: #080222c4;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #fc1d1d;
+    gap: 1rem;
+    position: relative;
+    height: 30%;
+}
+
+.mainHead>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mainHead h1 {
+    font-size: 1em;
+}
+
+.searchForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.searchForm>div>input {
+    width: 50%;
+}
+
+.searchForm>div>p {
+    font-size: 14px;
 }
 
 .search {
     padding: 0.5rem;
-    border-radius: 1rem;
-    width: 70%;
+    width: 100%;
 }
 
 .navOptions {
-    background: #fff;
-    border-bottom: 1px solid #111;
+    background: #f13a3a;
+    height: 50%;
 }
 
 .navOptions>ul {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    width: 60%;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: left;
     padding: 10px 5%;
     list-style-type: none;
+    font-size: 16px;
+    font-weight: 700;
+    border-right: 2px solid #f13a3a;
+    color: #fff;
 }
 
-.navOptions>ul {
-    font-size: 12px;
-    font-weight: 700;
-}
+/* .navOptions>ul {} */
 
 .navCart {
     position: relative;
     width: fit-content;
     height: fit-content;
-    /* padding: 1rem; */
-    /* color: #fff; */
-    /* display: flex; */
-    /* gap: 0.5rem; */
-    /* align-items: center;
-    text-decoration: none; */
 }
 
 .navCart>p {
@@ -81,7 +112,7 @@
 }
 
 .navLink {
-    color: #111;
+    color: #fff;
     text-decoration: none;
     font-weight: 700;
 }
@@ -94,5 +125,5 @@
 
 .navLink.active {
     text-decoration: underline;
-    color: #f70f0f;
+    color: #111;
 }
