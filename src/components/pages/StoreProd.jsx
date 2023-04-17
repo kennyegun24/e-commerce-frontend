@@ -45,7 +45,7 @@ const StoreProd = () => {
 
   return (
     <div>
-      {state.length > 0 && pathname == `/categories/${state[0].category_id}/products` ? <h2>{state[0].category.name}</h2> : <h2 className='fntLg'>{state[0].store.store_name}</h2>}
+      {state.length > 0 && pathname === `/categories/${state[0].category_id}/products` ? <h2>{state[0].category.name}</h2> : <h2 className='fntLg'>{state[0].store.store_name}</h2>}
       {state.length > 0 ?
         (<Row gutters={[32, 32]} className='rand'>
           {
@@ -66,6 +66,7 @@ const StoreProd = () => {
                         <p className='bold'>{prod.name}</p>
                         <p className='bold red'>Price: ${prod.price}</p>
                         <p className='bold greySlash'>Previous: ${prod.price * 1.2}</p>
+                        <p className='bold'>Stock: {prod.in_stock}</p>
                       </div>
                     </NavLink>
 
