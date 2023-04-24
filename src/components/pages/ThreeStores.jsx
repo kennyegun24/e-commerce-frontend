@@ -1,27 +1,40 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Autoplay } from 'swiper';
 
+// Import Swiper styles
+import 'swiper/css';
 const ThreeStores = () => {
+    SwiperCore.use([Autoplay]);
     const store = useSelector(state => state.store)
 
     return (
         <div>
-            <h2 className="red bold fntLg">Stores</h2>
-            <div className='home'>
+            {/* <div className='home'> */}
+            <Swiper
+                spaceBetween={10}
+                slidesPerView={1}
+                autoplay={{ delay: 4000 }}
+                onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) => console.log(swiper)}
+            >
                 {
                     store.stores.map((sto) => {
                         return (
-                            <NavLink key={sto.id} state={sto.product} to={`/store/${sto.id}/products`} className='homeCatDv'>
-                                <img className='catImg' src={sto.image} alt="" />
-                                <p className='redBg'></p>
-                                <p className='catName'>{sto.store_name}</p>
-                            </NavLink>
+                            <SwiperSlide>
+                                <NavLink key={sto.id} state={sto.product} to={`/store/${sto.id}/products`} className='homeCatDv'>
+                                    <img className='catImg' src={sto.image} alt="" />
+                                    <p className='catName'>{sto.store_name}</p>
+                                </NavLink>
+                            </SwiperSlide>
                         )
                     })
                 }
-            </div>
+            </Swiper >
         </div>
+        // </div>
     )
 }
 
