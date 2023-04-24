@@ -1,4 +1,4 @@
-.redSlash {
+/* .redSlash {
     color: rgb(241, 55, 55);
     text-decoration: line-through;
 }
@@ -11,28 +11,46 @@
 
 .detailsPage {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 1rem 2%;
-    gap: 2%;
     align-items: center;
+    width: 100%;
+    height: 100vh;
+    font-family: sans-serif;
+    color: #fff;
+}
+
+.detailsPageLiilDiv {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    height: 100%;
+}
+
+.detailsBigDivImg {
+    flex: 1;
+    max-width: 100%;
+    background: #160f33;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
 }
 
 .detailsDvImg {
-    flex-basis: 50%;
-    height: 70vh;
+    max-width: 50%;
 }
 
 .detailsDvImg>img {
-    width: 100%;
-    height: 100%;
+    max-width: 80%;
     object-fit: contain;
 }
 
 .detailsDvDtl {
-    flex-basis: 50%;
+    flex: 0.6;
+    height: 40%;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .detailsSize>span {
@@ -67,7 +85,6 @@
 .increment {
     border: 1px solid #111;
     width: fit-content;
-    /* padding: 0.5rem; */
     font-size: 20px;
 }
 
@@ -84,4 +101,187 @@
     align-items: center;
     font-size: 2rem;
     color: grey;
+}
+
+@media (min-width: 200px) and (max-width: 650px) {
+    .detailsBigDivImg {
+        flex: 1;
+        width: 100%;
+        background: #fff;
+        color: #111;
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        flex-direction: column;
+    }
+
+    .detailsDvImg {
+        width: 70%;
+    }
+
+    .detailsDvImg>img {
+        width: 100%;
+        object-fit: contain;
+    }
+} */
+
+.detailsPage {
+    padding: 12px 0 0 0;
+    max-height: 100vh;
+    overflow: scroll;
+    width: 100%;
+    font-family: sans-serif;
+    /* background-color: #9da6ad67; */
+}
+
+.detailsPageLiilDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* height: 60%; */
+    gap: 1rem;
+}
+
+.detailsBigDivImg {
+    width: 100%;
+    /* height: 100%; */
+    padding: 0.5rem;
+}
+
+.detailsDvDtl {
+    border-radius: 25px 25px 0 0;
+    background: #fff;
+    padding: 1rem;
+}
+
+.detailsDvImg {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+    border-radius: 12px;
+}
+
+.detailsDvImg>img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    mix-blend-mode: multiply;
+}
+
+.detailsProdName {
+    font-size: 16px;
+}
+
+.prodDetailsAside1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.detailsCategory {
+    font-size: 12px;
+}
+
+.detailsStoreInStock {
+    display: flex;
+    font-size: 12px;
+    /* width: 100%; */
+    /* align-items: end; */
+    justify-content: space-between;
+}
+
+
+.tabs {
+    /* border: 1px solid #111; */
+    margin-top: 2rem;
+    height: 35vh;
+    overflow-y: scroll;
+    border-radius: 12px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+
+.tabHeaders {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #ffffff;
+}
+
+.tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tabLilHeads {
+    padding: 0.5rem;
+    font-size: 14px;
+    width: 33%;
+    cursor: pointer;
+    text-align: center;
+    /* background: #d8d6d6; */
+    border-bottom: 1px solid #5eb9dd;
+}
+
+.active {
+    color: #fff;
+}
+
+.detailsDesc {
+    display: block;
+    font-size: 14px;
+    padding: 0.5rem;
+}
+
+.detailsDesc span {
+    font-weight: 600;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.description-active {
+    display: block;
+}
+
+.non-active {
+    display: none;
+}
+
+.detailsPrice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    font-size: 15px;
+}
+
+.detailsPrice>div {
+    width: 33%;
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+}
+
+.addMinus {
+    padding: 0.5rem;
+    border: none;
+    color: #fff;
+}
+
+.addCart {
+    border: none;
+    width: 33%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: #fff;
 }
