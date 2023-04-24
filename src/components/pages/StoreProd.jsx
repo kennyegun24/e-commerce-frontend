@@ -45,7 +45,7 @@ const StoreProd = () => {
 
   return (
     <div>
-      {state.length > 0 && pathname === `/categories/${state[0].category_id}/products` ? <h2>{state[0].category.name}</h2> : <h2 className='fntLg'>{state[0].store.store_name}</h2>}
+      {state.length > 0 && pathname === `/categories/${state[0].category_id}/products` ? <h2 className='prodStoreHead'>{state[0].category.name}</h2> : <h2 className='prodStoreHead'>{state[0].store.store_name}</h2>}
       {state.length > 0 ?
         (<Row gutters={[32, 32]} className='rand'>
           {
@@ -55,7 +55,7 @@ const StoreProd = () => {
                 dispatch(itemAdded({ id: uuid(), product: { state, price: prod.price * quantity }, quantity, price: prod.price * quantity }))
               }
               return (
-                <Col xs={24} sm={12} lg={6} key={prod.id}>
+                <Col xs={12} sm={12} lg={6} key={prod.id}>
                   <div className='productsDivs'>
                     <NavLink state={prod} to={`${pathname}/${prod.id}`} className='productsDiv' >
                       <div className='prodLilImg'>

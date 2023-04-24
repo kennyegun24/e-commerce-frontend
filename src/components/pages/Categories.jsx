@@ -25,7 +25,7 @@ const Categories = () => {
                   const states = prod.product.map((hey) => hey)
 
                   return (
-                    <Col xs={24} sm={12} lg={12} key={prod.id}>
+                    <Col xs={12} sm={12} lg={12} key={prod.id}>
                       <NavLink state={states} to={`/categories/${prod.id}/products`} className='productsDiv' >
                         <div className='prodLilImg'>
                           <img className='prodImg' src={prod.image} alt="" />

@@ -50,7 +50,7 @@ const AllProducts = () => {
 
   return (
     <div>
-      <h2 className='red bold fntLg'>Products</h2>
+      <h2 className='red bold prodStoreHead'>Products</h2>
       <div className='subProductsDiv'>
         <Row gutters={[32, 32]} className='rand'>
           {
@@ -60,7 +60,7 @@ const AllProducts = () => {
                 dispatch(itemAdded({ id: uuid(), product: { state, price: prod.price * quantity }, quantity, price: prod.price * quantity }))
               }
               return (
-                <Col xs={24} sm={12} lg={8} key={prod.id}>
+                <Col xs={12} sm={12} lg={8} key={prod.id}>
                   <div className={`${prod.in_stock <= 0 && 'finish'} productsDivs`}>
                     <NavLink state={prod} onClick={() => clear()} to={`/product/${prod.id}`} className='productsDiv' >
                       <div className='prodLilImg'>
