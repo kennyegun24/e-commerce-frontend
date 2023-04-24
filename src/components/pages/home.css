@@ -15,8 +15,6 @@
   font-size: 2.2rem;
 }
 
-
-
 .homeLilDv {
   padding: 0 2%;
 }
@@ -25,7 +23,6 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  /* background-color: #111; */
 }
 
 .home {
@@ -38,20 +35,17 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
-  aspect-ratio: 1/2;
 }
 
 .homeCatDv {
   position: relative;
-  margin: 10px;
   flex-basis: 30%;
-  /* height: 100%; */
-  /* aspect-ratio: 1/1; */
 }
 
 .catName {
   position: absolute;
-  top: 0;
+  top: -15px;
+  left: 0;
   font-size: 24px;
   font-weight: 600;
   color: #fff;
@@ -69,9 +63,9 @@
   width: 100%;
 } */
 
-.subProductsDiv {
+/* .subProductsDiv {
   display: flex;
-}
+} */
 
 .rand {
   display: flex;
@@ -87,6 +81,7 @@
   align-items: center;
   flex-direction: column;
   flex: 1;
+  /* width: fit-content; */
 }
 
 .productsDivs {
@@ -140,14 +135,14 @@
   font-size: 25px;
   font-weight: 800;
   color: #c40808;
-  transition: 1s linear ease-in-out;
+  transition: 0.4s ease-in-out;
   width: fit-content;
 }
 
 .catViewAll:hover {
   text-decoration: underline;
   color: #0b0b24;
-  transition: 1s linear ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
 .rotate {
@@ -174,6 +169,13 @@
   filter: grayscale(100%);
 }
 
+.prodStoreHead {
+  text-align: center;
+  background: #fff;
+  z-index: 999;
+  padding: 0.5rem;
+}
+
 @keyframes roll {
   0% {
     transform: rotate(0deg);
@@ -185,27 +187,52 @@
 }
 
 @media (max-width: 500px) {
-  /* .subProductsDiv {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-  } */
-
   .productsDiv {
     margin: 5px;
   }
 
   .prodLilImg {
-    height: 200px;
-    width: 80%;
+    height: 100px;
+    width: 100px;
   }
 
   .prodImg {
-    height: 100%;
+    height: auto;
+    width: 100%;
   }
 
   .home {
     flex-wrap: wrap;
-    display: flex;
     flex-direction: column;
+    align-items: normal;
+  }
+
+  .addCartButton {
+    display: none;
+  }
+
+  .homeLilDv {
+    padding: 0 1%;
+  }
+
+  .mainProductsDiv {
+    padding: 2% 1%;
+  }
+
+  .prodLilDetails {
+    gap: 0.2rem;
+  }
+
+  .catViewAll {
+    font-size: 3.8vw;
+  }
+
+  .prodStoreHead {
+    text-align: center;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 999;
+    padding: 0.5rem;
   }
 }
