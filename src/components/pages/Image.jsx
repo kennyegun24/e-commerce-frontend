@@ -8,6 +8,7 @@ const Imag = ({ imageUrl, setColor }) => {
 
         const canvas = canvaRef.current
         const image = new Image()
+        image.crossOrigin = 'anonymous'
 
         image.onload = () => {
             canvas.width = image.width
@@ -25,9 +26,9 @@ const Imag = ({ imageUrl, setColor }) => {
         image.src = imageUrl
     }, [imageUrl])
     return (
-        <div style={{ width: '100%', height: '50vh' }}>
+        <div className='detailsDvImg'>
             <canvas ref={canvaRef} style={{ opacity: 0, width: 0 }}></canvas>
-            <img src={imageUrl} style={{ width: '100%' }} alt="" />
+            <img src={imageUrl} style={{ width: '300px', height: '300px' }} alt="" />
         </div>
     )
 }

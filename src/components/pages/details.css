@@ -167,7 +167,7 @@
     width: 100%;
     object-fit: contain;
     border-radius: 12px;
-    mix-blend-mode: multiply;
+    /* mix-blend-mode: multiply; */
 }
 
 .detailsProdName {
@@ -257,31 +257,32 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 2rem;
-    font-size: 15px;
 }
 
 .detailsPrice>div {
-    width: 33%;
+    width: 30%;
     text-align: center;
 }
 
 .flex {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10%;
+    justify-content: space-around;
+    /* gap: 10%; */
 }
 
 .addMinus {
     padding: 0.5rem;
     border: none;
     color: #fff;
+    /* width: 30%; */
 }
 
 .addCart {
     border: none;
-    width: 33%;
+    width: 30%;
     padding: 0.5rem;
     border-radius: 0.5rem;
     color: #fff;
+    font-size: 25px;
 }

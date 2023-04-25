@@ -40,9 +40,9 @@ const Details = () => {
     <section style={{ background: color }} className='detailsPage'>
       <div className='detailsPageLiilDiv'>
         <div className='detailsBigDivImg'>
-          <div className='detailsDvImg'>
-            <Imag imageUrl={state.image} setColor={setColor} />
-          </div>
+          {/* <div className='detailsDvImg'> */}
+          <Imag imageUrl={state.image} setColor={setColor} />
+          {/* </div> */}
 
         </div>
 
@@ -103,7 +103,7 @@ const Details = () => {
 
             <div className='detailsPrice'>
               <div>
-                <p style={{ fontSize: '20px' }}>${num.toLocaleString()}</p>
+                <p style={{ fontSize: '25px' }}>${num.toLocaleString()}</p>
               </div>
 
               <div className='flex increment'>
