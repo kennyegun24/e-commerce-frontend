@@ -19,7 +19,6 @@ const Imag = ({ imageUrl, setColor }) => {
 
             const imageData = context.getImageData(0, 0, 1, 1).data
             const color = `rgb(${imageData[0]}, ${imageData[1]}, ${imageData[2]})`
-            // console.log(color)
             setBgColor(color)
             setColor(color)
         }
@@ -28,7 +27,7 @@ const Imag = ({ imageUrl, setColor }) => {
     return (
         <div className='detailsDvImg'>
             <canvas ref={canvaRef} style={{ opacity: 0, width: 0 }}></canvas>
-            <img src={imageUrl} style={{ width: '300px', height: '300px' }} alt="" />
+            <img src={imageUrl} alt="" />
         </div>
     )
 }
