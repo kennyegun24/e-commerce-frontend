@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { FaPlus, FaMinus, FaCartPlus, FaShoppingCart } from 'react-icons/fa'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { FaPlus, FaMinus, FaShoppingCart } from 'react-icons/fa'
 import './details.css'
 import { itemAdded } from '../../redux/cart/cart'
 import { v4 as uuid } from 'uuid'
 import { useLocation } from 'react-router-dom'
-import img from '../../assets/vic.jpg'
 import Imag from './Image'
-import useColor from '../cutomHook/useColor'
 
 const Details = () => {
   const locate = useLocation()
   const { state } = locate
   const [quantity, setNumOfOrder] = useState(1)
   const dispatch = useDispatch()
+
+  const [success, setSuccess] = useState(false)
+  const [opacity, setOpacity] = useState(1)
+  const [length, setLength] = useState(1)
+
   const increase = () => {
     setNumOfOrder(quantity + 1)
   }
@@ -22,6 +25,23 @@ const Details = () => {
   }
   const addItem = () => {
     dispatch(itemAdded({ id: uuid(), product: { state, price: state.price * quantity }, quantity, price: state.price * quantity }))
+    setSuccess(true)
+    let i = 1
+    let j = 1
+    const loop = setInterval(() => {
+      i -= 0.1
+      setOpacity(i)
+      if (i <= 0.1) {
+        clearInterval(loop)
+      }
+    }, 400);
+    const secLoop = setInterval(() => {
+      j -= 0.02
+      setLength(j)
+      if (i <= 0.1) {
+        clearInterval(secLoop)
+      }
+    }, 80);
   }
 
   const [tabIndex, setTabIndex] = useState(1)
@@ -32,18 +52,21 @@ const Details = () => {
 
   const [color, setColor] = useState(null)
 
-  // console.log(useColor)
   const num = parseInt(state.price)
-  console.log(color)
 
   return (
     <section style={{ background: color }} className='detailsPage'>
+      {
+        success && (setTimeout(() => { setSuccess(true) }, 4000)) && (
+          <div className='successMessage'>
+            <span style={{ opacity: opacity }} className='success'>Added to cart</span>
+            <span style={{ background: '#fff', width: `${length * 100}%`, opacity: opacity, height: '5px' }}></span>
+          </div>
+        )
+      }
       <div className='detailsPageLiilDiv'>
         <div className='detailsBigDivImg'>
-          {/* <div className='detailsDvImg'> */}
           <Imag imageUrl={state.image} setColor={setColor} />
-          {/* </div> */}
-
         </div>
 
         <div className='detailsDvDtl'>
@@ -62,7 +85,7 @@ const Details = () => {
               <strong><p>Items left: {state.in_stock}</p></strong>
             </div>
 
-            <div style={{ padding: '0 1.5rem' }}>
+            <div className='tabsContainer'>
               <div className='tabs'>
                 <div className='tabHeaders'>
                   <h3
