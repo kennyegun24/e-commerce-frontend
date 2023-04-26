@@ -17,8 +17,6 @@ const ThreeCategories = () => {
                 spaceBetween={10}
                 slidesPerView={1}
                 autoplay={{ delay: 4000 }}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
             >
 
                 {
