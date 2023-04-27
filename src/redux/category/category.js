@@ -12,12 +12,20 @@ export const getCategory = createAsyncThunk('category/category/1', async () => {
   return data
 })
 
+export const getOneCategory = createAsyncThunk('category/category/1/prod', async (id) => {
+  const res = await fetch(`http://localhost:3000/api/v1/categories/${id}/products`)
+  const data = await res.json()
+  console.log(data)
+  return data
+})
+
 const categorySlice = createSlice({
   name: 'category',
   initialState: {
     categories: [],
     category: [],
-    status: null
+    oneCategory: [],
+    status: false
   },
   reducers: {},
   extraReducers: (reduce) => {
@@ -33,8 +41,19 @@ const categorySlice = createSlice({
         const isFulfilled = state;
         isFulfilled.status = 'Fulfilled'
         const dataJson = action.payload.data
-        const toJSON = JSON.parse(dataJson)
-        isFulfilled.category = toJSON
+        // const toJSON = JSON.parse(dataJson)
+        isFulfilled.category = dataJson
+      })
+      .addCase(getOneCategory.pending, (state, action) => {
+        const isFulfilled = state;
+        isFulfilled.status = true
+      })
+      .addCase(getOneCategory.fulfilled, (state, action) => {
+        const isFulfilled = state;
+        isFulfilled.status = false
+        // isFulfilled.status = 'Fulfilled'
+        const dataJson = action.payload.data
+        isFulfilled.oneCategory = dataJson
       })
   },
 })
