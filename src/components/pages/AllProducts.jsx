@@ -6,6 +6,7 @@ import { searchInp } from "../../redux/search"
 import { itemAdded } from '../../redux/cart/cart'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux';
+import LazyImage from './LazyImage';
 
 const AllProducts = () => {
   const dispatch = useDispatch()
@@ -64,7 +65,8 @@ const AllProducts = () => {
                   <div className={`${prod.in_stock <= 0 && 'finish'} productsDivs`}>
                     <NavLink state={prod} onClick={() => clear()} to={`/product/${prod.id}`} className='productsDiv' >
                       <div className='prodLilImg'>
-                        <img className='prodImg' src={prod.image} alt="" />
+                        {/* <img className='prodImg' src={prod.image} alt="" /> */}
+                        <LazyImage src={prod.image} />
                       </div>
                       <div className='prodLilDetails'>
                         <p className='bold'>{prod.category.name}</p>

@@ -7,19 +7,19 @@ const initialState = {
   oneStore: []
 }
 export const getStores = createAsyncThunk('store/store', async () => {
-  const res = await fetch('http://localhost:3000/api/v1/stores')
+  const res = await fetch('http://localhost:4000/api/v1/stores')
   const data = await res.json()
   return data
 })
 
 export const getAllStores = createAsyncThunk('store/allStore', async () => {
-  const res = await fetch('http://localhost:3000/api/v1/stores/all')
+  const res = await fetch('http://localhost:4000/api/v1/stores/all')
   const data = await res.json()
   return data
 })
 
 export const getOneStore = createAsyncThunk('store/Store/:id', async (id) => {
-  const res = await fetch(`http://localhost:3000/api/v1/stores/${id}/products`)
+  const res = await fetch(`http://localhost:4000/api/v1/stores/${id}/products`)
   const data = await res.json()
   console.log(data)
   return data

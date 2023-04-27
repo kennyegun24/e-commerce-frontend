@@ -1,19 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getAllCategories = createAsyncThunk('category/category', async () => {
-  const res = await fetch('http://localhost:3000/api/v1/categories/all')
+  const res = await fetch('http://localhost:4000/api/v1/categories/all')
   const data = await res.json()
   return data
 })
 
 export const getCategory = createAsyncThunk('category/category/1', async () => {
-  const res = await fetch('http://localhost:3000/api/v1/categories')
+  const res = await fetch('http://localhost:4000/api/v1/categories')
   const data = await res.json()
   return data
 })
 
 export const getOneCategory = createAsyncThunk('category/category/1/prod', async (id) => {
-  const res = await fetch(`http://localhost:3000/api/v1/categories/${id}/products`)
+  const res = await fetch(`http://localhost:4000/api/v1/categories/${id}/products`)
   const data = await res.json()
   console.log(data)
   return data

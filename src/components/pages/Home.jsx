@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import './home.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStores } from '../../redux/store/store';
 import { getAllProducts } from '../../redux/product/product';
 import { getCategory } from '../../redux/category/category';
 import { FaHourglass, FaPlus, FaMinus } from 'react-icons/fa'
-import ThreeStores from './ThreeStores';
 import ThreeCategories from './ThreeCategories';
 import AllProducts from './AllProducts';
+
+const ThreeStores = lazy(() => import('./ThreeStores'));
+
 const Home = () => {
   const dispatch = useDispatch()
   const { products } = useSelector((prod) => prod.product)
 
   useEffect(() => {
     dispatch(getCategory())
-    dispatch(getStores())
     dispatch(getAllProducts())
   }, [])
 
@@ -33,7 +34,9 @@ const Home = () => {
           </div>
 
           <div className='homeLilDv'>
-            <ThreeStores />
+            <Suspense fallback="laod...">
+              <ThreeStores />
+            </Suspense>
           </div>
         </>)
       }

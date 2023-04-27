@@ -1,12 +1,18 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay } from 'swiper';
 
 // Import Swiper styles
 import 'swiper/css';
+import { getStores } from '../../redux/store/store';
 const ThreeStores = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getStores())
+    }, [])
+
     SwiperCore.use([Autoplay]);
     const store = useSelector(state => state.store)
 
