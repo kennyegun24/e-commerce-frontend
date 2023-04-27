@@ -35,7 +35,7 @@
 }
 
 .cartDisplay>div>p {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
 }
 
@@ -107,6 +107,7 @@
   .cartDisplaySmDv {
     flex-direction: column;
     width: 100%;
+    height: 70vh;
   }
 
   .flexCart {
@@ -126,5 +127,26 @@
     width: 100%;
     border-radius: 0;
     height: auto;
+  }
+
+  .cartProdName {
+    font-size: 15px;
+  }
+
+  .center {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    gap: 5vh;
+  }
+
+  .link {
+    color: #111;
+    background: orange;
+    padding: 0.5rem;
+    text-decoration: none;
   }
 }
