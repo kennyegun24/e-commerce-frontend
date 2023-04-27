@@ -8,6 +8,7 @@ import { v4 as uuid } from 'uuid'
 import { useNavigate, useLocation } from 'react-router-dom'
 import Imag from './Image'
 import { getOneProduct } from '../../redux/product/product'
+import Success from './Success'
 
 const Details = () => {
   const { product, status } = useSelector(state => state.product)
@@ -16,8 +17,6 @@ const Details = () => {
   const dispatch = useDispatch()
 
   const [success, setSuccess] = useState(false)
-  const [opacity, setOpacity] = useState(1)
-  const [length, setLength] = useState(1)
   const history = useNavigate()
 
   const increase = () => {
@@ -31,23 +30,6 @@ const Details = () => {
   const addItem = () => {
     dispatch(itemAdded({ id: uuid(), product: { ...product, price: product.price * quantity }, quantity, price: product.price * quantity }))
     setSuccess(true)
-
-    let i = 1
-    let j = 1
-    const loop = setInterval(() => {
-      i -= 0.1
-      setOpacity(i)
-      if (i <= 0.1) {
-        clearInterval(loop)
-      }
-    }, 400);
-    const secLoop = setInterval(() => {
-      j -= 0.02
-      setLength(j)
-      if (i <= 0.1) {
-        clearInterval(secLoop)
-      }
-    }, 80);
   }
 
   const [tabIndex, setTabIndex] = useState(1)
@@ -73,17 +55,13 @@ const Details = () => {
     <section style={{ background: color }} className='detailsPage'>
       {
         success && (setTimeout(() => { setSuccess(false) }, 4000)) && (
-          <div className='successMessage'>
-            <span style={{ opacity: opacity }} className='success'>Added to cart</span>
-            <span style={{ background: '#fff', width: `${length * 100}%`, opacity: opacity, height: '5px' }}></span>
-          </div>
-        )
-      }
+          <Success color={'#fff'} text={'Added to cart'} success={success} />
+        )}
       {status ? <p>hey</p> : (
         <div className='detailsPageLiilDiv'>
-          <AiOutlineArrowLeft onClick={() => history(joinUrl == '/product' ? '/' : joinUrl)} />
+          <AiOutlineArrowLeft style={{ background: '#fff', color: color, fontSize: '2rem', padding: '0.5rem', position: 'absolute', top: '0', left: '0' }} onClick={() => history(joinUrl == '/product' ? '/' : joinUrl)} />
           <div className='detailsBigDivImg'>
-            <Imag imageUrl={product.image} setColor={setColor} />
+            <Imag imageUrl={product.image} setColor={setColor} className={'detailsDvImg'} />
           </div>
 
           <div className='detailsDvDtl'>
