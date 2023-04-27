@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const Imag = ({ imageUrl, setColor }) => {
+const Imag = ({ imageUrl, setColor, className }) => {
     const canvaRef = useRef(null)
     const [bgColor, setBgColor] = useState('#fff')
 
@@ -13,7 +13,6 @@ const Imag = ({ imageUrl, setColor }) => {
         image.onload = () => {
             canvas.width = image.width
             canvas.height = image.height
-
             const context = canvas.getContext('2d')
             context.drawImage(image, 0, 0)
 
@@ -25,7 +24,7 @@ const Imag = ({ imageUrl, setColor }) => {
         image.src = imageUrl
     }, [imageUrl])
     return (
-        <div className='detailsDvImg'>
+        <div className={className}>
             <canvas ref={canvaRef} style={{ opacity: 0, width: 0 }}></canvas>
             <img src={imageUrl} alt="" />
         </div>
