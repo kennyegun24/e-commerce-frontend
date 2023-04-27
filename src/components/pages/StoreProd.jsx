@@ -61,7 +61,7 @@ const StoreProd = () => {
 
   return (
     <div>
-      {joinUrl === '/categories' && status || joinUrl === '/store' && pending ? <div className=''>pending</div> :
+      {joinUrl === '/categories' && status || joinUrl === '/store' && pending ? <div className='center'><p className='rotate' /></div> :
         (
           <div>
             {oneCategory.length > 0 && joinUrl === `/categories` && <h2 className='prodStoreHead'>{oneCategory[0].category.name}</h2>}

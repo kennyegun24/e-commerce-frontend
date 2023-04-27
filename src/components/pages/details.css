@@ -1,6 +1,6 @@
 .detailsPage {
     padding: 12px 0 0 0;
-    max-height: 100vh;
+    height: 100vh;
     overflow: scroll;
     width: 100%;
     font-family: sans-serif;

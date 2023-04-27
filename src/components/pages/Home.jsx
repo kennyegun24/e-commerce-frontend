@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <div className='homeMainDiv'>
       {products.length < 1 ?
-        <p className="center"><FaHourglass className='rotate' />Loading...</p>
+        <p className="center"><span className='rotate' /></p>
         :
         (<>
           <div className='homeLilDv'>

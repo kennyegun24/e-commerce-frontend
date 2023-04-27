@@ -3,7 +3,6 @@ import { getAllCategories } from '../../redux/category/category'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'antd'
 import { NavLink } from 'react-router-dom'
-import { FaHourglass } from 'react-icons/fa'
 
 const Categories = () => {
   const dispatch = useDispatch()
@@ -14,10 +13,10 @@ const Categories = () => {
   return (
     <div>
       {categories.length < 1 ?
-        <p className="center"><FaHourglass className='rotate' />Loading...</p>
+        <div className="center"><p className='rotate' /></div>
         :
         (<div className='mainProductsDiv'>
-          <h2 className='red bold fntLg'>Categories</h2>
+          <h2 className='prodStoreHead'>Categories</h2>
           <div className='subProductsDiv'>
             <Row gutters={[32, 32]} className='rand'>
               {
