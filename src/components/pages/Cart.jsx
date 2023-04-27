@@ -14,6 +14,7 @@ const Cart = () => {
   return (
     <div className='cart'>
       <div className="cartDetailDiv">
+        <p style={{ textAlign: 'center', fontSize: '2rem' }}>Cart</p>
         <div className='cartDisplaySmDv'>
 
           {product.products.length < 1 ? <p className='center'>Cart is empty</p> :
@@ -29,21 +30,27 @@ const Cart = () => {
                       <p>
                         {cart.product.state.name}
                       </p>
+                      <p>
+                        {cart.product.state.color}
+                      </p>
                     </div>
                   </NavLink>
 
-                  <div>
+                  {/* <div>
                     <p>
                       {cart.quantity}
                     </p>
                     <p>
                       {cart.product.state.color}
                     </p>
-                  </div>
+                  </div> */}
 
                   <div>
                     <p>
                       ${cart.price}
+                    </p>
+                    <p>
+                      {cart.quantity}
                     </p>
                   </div>
 
