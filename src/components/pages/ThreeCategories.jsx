@@ -23,7 +23,7 @@ const ThreeCategories = () => {
                     category.map((cate) => {
                         return (
                             <SwiperSlide>
-                                <NavLink key={cate.id} state={cate.product} to={`/categories/${cate.id}/products`} className='homeCatDv'>
+                                <NavLink key={cate.id} to={`/categories/${cate.id}/products`} className='homeCatDv'>
                                     <img className='catImg' src={cate.image} alt="" />
                                     <p className='catName'>{cate.name}</p>
                                 </NavLink>
