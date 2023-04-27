@@ -22,7 +22,7 @@ const ThreeStores = () => {
                     store.stores.map((sto) => {
                         return (
                             <SwiperSlide>
-                                <NavLink key={sto.id} state={sto.product} to={`/store/${sto.id}/products`} className='homeCatDv'>
+                                <NavLink key={sto.id} to={`/store/${sto.id}/products`} className='homeCatDv'>
                                     <img className='catImg' src={sto.image} alt="" />
                                     <p className='catName'>{sto.store_name}</p>
                                 </NavLink>
