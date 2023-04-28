@@ -15,7 +15,6 @@ export const getCategory = createAsyncThunk('category/category/1', async () => {
 export const getOneCategory = createAsyncThunk('category/category/1/prod', async (id) => {
   const res = await fetch(`http://localhost:4000/api/v1/categories/${id}/products`)
   const data = await res.json()
-  console.log(data)
   return data
 })
 

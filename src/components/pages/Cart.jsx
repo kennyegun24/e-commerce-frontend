@@ -9,7 +9,6 @@ import { AiOutlineArrowLeft } from 'react-icons/ai'
 
 const Cart = () => {
   const product = useSelector(state => state.cart)
-  console.log(product)
   const [success, setSuccess] = useState(false)
   const dispatch = useDispatch()
   const deleteCartItem = (id, price) => {
@@ -41,7 +40,6 @@ const Cart = () => {
                 {<p style={{ height: '5vh', textAlign: 'center', fontSize: '2rem' }}>Cart</p>}
                 <div className='cartDisplaySmDv'>
                   {product.products.map((cart) => {
-                    console.log(cart)
                     return (
                       <div className='cartDisplay' key={cart.id} >
                         <AiOutlineArrowLeft style={{ background: '#111', color: '#fff' }} className='arrowBack' onClick={() => history(-1)} />

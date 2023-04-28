@@ -51,8 +51,6 @@ const Details = () => {
     dispatch(getOneProduct(getId))
   }, [])
 
-  console.log(product)
-
   return (
     <section style={{ background: color }} className='detailsPage'>
       {
