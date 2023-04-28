@@ -3,13 +3,14 @@
   padding: 1.5rem;
   justify-content: center;
   font-family: sans-serif;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 
 .cartDetailDiv {
-  width: 70%;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
@@ -22,12 +23,12 @@
 
 .cartDisplaySmDv {
   display: flex;
-  flex-direction: column;
   gap: 1.5rem;
-  width: 75%;
-  max-height: 100%;
+  width: 100%;
+  height: 80vh;
   overflow-y: auto;
   padding: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .cartDisplaySmDv::-webkit-scrollbar {
@@ -58,14 +59,17 @@
 .cartDisplay {
   justify-content: space-around;
   color: #707070;
+  display: flex;
+  width: 45%;
+  flex-grow: 1;
 }
 
 .checkout {
   background: #11113a;
   border-radius: 12px;
   color: aliceblue;
-  width: 38%;
-  height: 40vh;
+  width: 100%;
+  height: auto;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -99,15 +103,31 @@
   cursor: pointer;
 }
 
+.center {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 5vh;
+}
+
 @media(min-width: 200px) and (max-width: 650px) {
   .cart {
     padding: 0;
+    height: 95vh;
   }
 
   .cartDisplaySmDv {
     flex-direction: column;
     width: 100%;
     height: 70vh;
+    flex-wrap: initial;
+  }
+
+  .cartDisplay {
+    width: 100%;
   }
 
   .flexCart {
@@ -127,20 +147,11 @@
     width: 100%;
     border-radius: 0;
     height: auto;
+    border-radius: 40px 40px 0 0;
   }
 
   .cartProdName {
     font-size: 15px;
-  }
-
-  .center {
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    gap: 5vh;
   }
 
   .link {

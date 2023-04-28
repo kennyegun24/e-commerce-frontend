@@ -42,3 +42,10 @@
     color: #667eea;
     font-size: 18px;
 }
+
+@media (max-width: 767px) {
+    .loginForm {
+        padding: 1.5rem;
+        width: 100%;
+    }
+}

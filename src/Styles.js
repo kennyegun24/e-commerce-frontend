@@ -12,17 +12,20 @@ export const Form = styled.form`
   gap: 1rem;
   @media screen and (max-width: 767px) {
       padding: 1.5rem;
-      width: 70%
+      width: 100%;
   }
 `;
 
 export const FormDiv = styled.div`
   display: flex;
   justify-content: center;
-  height: 85vh;
+  height: 100vh;
   align-items: center;
   padding: 1rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  @media screen and (max-width: 767px) {
+    height: 100vh;
+}
 `
 
 export const Input = styled.input`

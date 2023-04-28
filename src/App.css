@@ -11,9 +11,6 @@
 }
 
 .fixPositionNav {
-  /* position: sticky;
-  top: 0;
-  z-index: 100; */
   height: 100vh;
   width: 20%;
 }
@@ -28,6 +25,11 @@
   overflow-y: scroll;
 }
 
+.fullPage {
+  width: 100%;
+  height: 100vh;
+}
+
 .routes::-webkit-scrollbar {
   display: none;
 }
@@ -35,18 +37,16 @@
 @media (min-width: 200px) and (max-width: 650px) {
   .app {
     display: block;
+    width: 100vw;
   }
 
   .routes {
-    width: 100%;
+    width: 100vw;
+    height: 95vh;
   }
 
   .fixPositionNav {
-    display: none;
-    position: absolute;
-    top: 0;
-    z-index: 100;
-    height: 100vh;
-    width: 20%;
+    width: 100%;
+    height: 5vh;
   }
 }
