@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Col, Row } from 'antd'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { itemAdded } from '../../redux/cart/cart'
 import { v4 as uuid } from 'uuid'
 import { getOneCategory } from '../../redux/category/category'
 import { getOneStore } from '../../redux/store/store'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 
 const StoreProd = () => {
   const { oneCategory, status } = useSelector(state => state.category)
@@ -59,6 +60,8 @@ const StoreProd = () => {
     }
   }
 
+  const history = useNavigate()
+
   return (
     <div>
       {joinUrl === '/categories' && status || joinUrl === '/store' && pending ? <div className='center'><p className='rotate' /></div> :
@@ -66,6 +69,7 @@ const StoreProd = () => {
           <div>
             {oneCategory.length > 0 && joinUrl === `/categories` && <h2 className='prodStoreHead'>{oneCategory[0].category.name}</h2>}
             {oneStore.length > 0 && joinUrl === `/store` && <h2 className='prodStoreHead'>{oneStore[0].store.store_name}</h2>}
+            <AiOutlineArrowLeft style={{ background: '#111', color: '#fff' }} className='arrowBack' onClick={() => history(joinUrl == '/product' ? '/' : joinUrl + 's')} />
             <Row gutters={[32, 32]} className='rand'>
               {
                 joinUrl === '/categories' ? oneCategory.map((prod, index) => {
@@ -74,7 +78,7 @@ const StoreProd = () => {
                     dispatch(itemAdded({ id: uuid(), product: { state, price: prod.price * quantity }, quantity, price: prod.price * quantity }))
                   }
                   return (
-                    <Col xs={12} sm={12} lg={6} key={prod.id}>
+                    <Col xs={12} sm={12} lg={8} key={prod.id}>
                       <div className='productsDivs'>
                         <NavLink to={`${pathname}/${prod.id}`} className='productsDiv' >
                           <div className='prodLilImg'>
@@ -110,7 +114,7 @@ const StoreProd = () => {
                     dispatch(itemAdded({ id: uuid(), product: { state, price: prod.price * quantity }, quantity, price: prod.price * quantity }))
                   }
                   return (
-                    <Col xs={12} sm={12} lg={6} key={prod.id}>
+                    <Col xs={12} sm={12} lg={8} key={prod.id}>
                       <div className='productsDivs'>
                         <NavLink state={prod} to={`${pathname}/${prod.id}`} className='productsDiv' >
                           <div className='prodLilImg'>

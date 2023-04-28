@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { getAllCategories } from '../../redux/category/category'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'antd'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 
 const Categories = () => {
   const dispatch = useDispatch()
@@ -10,12 +11,15 @@ const Categories = () => {
   useEffect(() => {
     dispatch(getAllCategories())
   }, [])
+  const history = useNavigate()
+
   return (
     <div>
       {categories.length < 1 ?
         <div className="center"><p className='rotate' /></div>
         :
         (<div className='mainProductsDiv'>
+          <AiOutlineArrowLeft style={{ background: '#111', color: '#fff' }} className='arrowBack' onClick={() => history('/')} />
           <h2 className='prodStoreHead'>Categories</h2>
           <div className='subProductsDiv'>
             <Row gutters={[32, 32]} className='rand'>
