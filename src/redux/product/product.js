@@ -15,7 +15,6 @@ export const getAllProducts = createAsyncThunk('product/products', async () => {
 export const getOneProduct = createAsyncThunk('product/product/id', async (id) => {
   const res = await fetch(`http://localhost:4000/api/v1/products/${id}`)
   const data = await res.json()
-  console.log(data)
   return data
 })
 

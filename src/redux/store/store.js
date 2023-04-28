@@ -21,7 +21,6 @@ export const getAllStores = createAsyncThunk('store/allStore', async () => {
 export const getOneStore = createAsyncThunk('store/Store/:id', async (id) => {
   const res = await fetch(`http://localhost:4000/api/v1/stores/${id}/products`)
   const data = await res.json()
-  console.log(data)
   return data
 })
 
@@ -39,22 +38,16 @@ const storeSlice = createSlice({
       .addCase(getAllStores.fulfilled, (state, action) => {
         const isFulfilled = state;
         isFulfilled.status = 'Fulfilled';
-        // const dataJson = action.payload.data
-        // const toJSON = JSON.parse(dataJson)
         isFulfilled.allStores = action.payload.data
       })
       .addCase(getOneStore.pending, (state) => {
         const isFulfilled = state;
         isFulfilled.status = true;
-        // const dataJson = action.payload.data
-        // const toJSON = JSON.parse(dataJson)
-        // isFulfilled.oneStore = action.payload.data
       })
       .addCase(getOneStore.fulfilled, (state, action) => {
         const isFulfilled = state;
         isFulfilled.status = false;
-        // const dataJson = action.payload.data
-        // const toJSON = JSON.parse(dataJson)
+
         isFulfilled.oneStore = action.payload.data
       })
   }
