@@ -51,6 +51,8 @@ const Details = () => {
     dispatch(getOneProduct(getId))
   }, [])
 
+  console.log(product)
+
   return (
     <section style={{ background: color }} className='detailsPage'>
       {
@@ -60,7 +62,7 @@ const Details = () => {
       {status ? <p className="center"><span className='rotate' /></p>
         : (
           <div className='detailsPageLiilDiv'>
-            <AiOutlineArrowLeft style={{ background: '#fff', color: color, fontSize: '2rem', padding: '0.5rem', position: 'absolute', top: '0', left: '0' }} onClick={() => history(joinUrl == '/product' ? '/' : joinUrl)} />
+            <AiOutlineArrowLeft style={{ background: '#fff', color: color }} className='arrowBack' onClick={() => history(joinUrl == '/product' ? '/' : joinUrl)} />
             <div className='detailsBigDivImg'>
               <Imag imageUrl={product.image} setColor={setColor} className={'detailsDvImg'} />
             </div>
