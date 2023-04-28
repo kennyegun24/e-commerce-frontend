@@ -1,24 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, NavLink, useNavigate, useNavigation } from 'react-router-dom'
-import { FaSearch, FaShoppingCart } from 'react-icons/fa'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { FaBars, FaShoppingCart } from 'react-icons/fa'
 import './nav.css'
 import { loginSuccess } from '../../redux/user/user'
 import useSearch from '../cutomHook/useSearch'
+import { AiOutlineClose } from 'react-icons/ai'
 const Nav = () => {
   const { products } = useSelector(state => state.cart)
   const { currentUser } = useSelector(state => state.user)
 
-  const { checkInput, handleSearch, getMax, getMin } = useSearch()
+  const { checkInput, getMax, getMin } = useSearch()
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const logout = () => {
     dispatch(loginSuccess(null))
+    setToggle(false)
   }
+
+  const [toggle, setToggle] = useState(false)
 
   return (
     <>
-      <header className='navHeader'>
+      {!toggle && <div onClick={() => setToggle(true)} className='toggle'><FaBars style={{ fontSize: '1.5rem', fontWeight: 'bold', }} /></div>}
+      {toggle && <div onClick={() => setToggle(false)} className='toggle'><AiOutlineClose style={{ fontSize: '1.5rem', fontWeight: 'bold', }} /></div>}
+      <header className={`${toggle ? 'navHeader' : 'navHeader hideNav'}`}>
         <nav className='navHead'>
           <nav>
             <h5>E-shopping</h5>
@@ -32,13 +38,13 @@ const Nav = () => {
 
         <nav className='mainHead'>
           <div>
-            <h1>
+            <h1 className='navH1'>
               <Link to='/' style={{ textDecoration: 'none', color: '#fff' }}>
                 Shopping Spree
               </Link>
             </h1>
 
-            <Link to='/cart' className='navCart'>
+            <Link to='/cart' onClick={() => setToggle(false)} className='navCart'>
               <FaShoppingCart className='cartIcon' />
               {products.length > 0 && <p>{products.length}</p>}
             </Link>
@@ -56,12 +62,12 @@ const Nav = () => {
 
         <nav className='navOptions'>
           <ul>
-            <NavLink to='/' className='navLink'>Home</NavLink>
-            <NavLink className='navLink' to='/categories'>Categories</NavLink>
-            <NavLink to='/stores' className='navLink'>Stores</NavLink>
-            <li>About us</li>
-            <NavLink style={{ color: '#fff', textDecoration: 'none' }} onClick={() => currentUser && logout()} to={!currentUser && '/login'}>{currentUser ? 'Logout' : 'Login'}</NavLink>
-            <li>Fashion</li>
+            <NavLink onClick={() => setToggle(false)} to='/' className='navLink'>Home</NavLink>
+            <NavLink onClick={() => setToggle(false)} className='navLink' to='/categories'>Categories</NavLink>
+            <NavLink onClick={() => setToggle(false)} to='/stores' className='navLink'>Stores</NavLink>
+            <li onClick={() => setToggle(false)} className='navLink'>About us</li>
+            <NavLink className='navLogout' onClick={() => currentUser && logout()} to={!currentUser && '/login'}>{currentUser ? 'Logout' : 'Login'}</NavLink>
+            <li onClick={() => setToggle(false)} className='navLink'>Fashion</li>
           </ul>
         </nav>
       </header >

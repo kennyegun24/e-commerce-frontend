@@ -1,12 +1,11 @@
 .navHeader {
     width: 100%;
-    /* background: #0b123f; */
     background: #f13a3a;
     font-family: 'Inter', sans-serif;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
+    color: #fff;
 }
 
 .navHead {
@@ -24,14 +23,12 @@
     gap: 1rem;
     font-size: 18px;
     align-items: center;
-    color: #fff;
 }
 
 .mainHead {
     display: flex;
     flex-direction: column;
     padding: 20px 5%;
-    color: #fff;
     background: #080222c4;
     border-bottom: 2px solid #fc1d1d;
     gap: 1rem;
@@ -86,15 +83,13 @@
     font-size: 16px;
     font-weight: 700;
     border-right: 2px solid #f13a3a;
-    color: #fff;
 }
-
-/* .navOptions>ul {} */
 
 .navCart {
     position: relative;
     width: fit-content;
     height: fit-content;
+    color: #111;
 }
 
 .navCart>p {
@@ -102,28 +97,90 @@
     top: 0;
     right: -10%;
     font-weight: 700;
-    color: #fff;
     background: #f70f0f;
     border-radius: 50%;
     height: max-content;
     width: max-content;
     padding: 0 0.2rem;
     font-size: 12px;
+    color: #fff;
 }
 
-.navLink {
-    color: #fff;
+.navLink,
+.navLogout {
     text-decoration: none;
     font-weight: 700;
 }
 
 .cartIcon {
     font-size: 30px;
-    color: #fff;
     padding: 0.2rem;
 }
 
 .navLink.active {
     text-decoration: underline;
     color: #111;
+}
+
+.toggle {
+    display: none;
+    align-items: center;
+    justify-content: right;
+    height: inherit;
+    padding: 0.5rem;
+}
+
+@media (min-width: 200px) and (max-width: 650px) {
+    .navH1 {
+        display: none;
+    }
+
+    .toggle {
+        display: flex;
+    }
+
+    .navHeader {
+        backdrop-filter: blur(50px);
+        background: transparent;
+        width: 50vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .navOptions {
+        background: transparent;
+        color: #111;
+    }
+
+    .mainHead {
+        background: transparent;
+        color: #111;
+        height: fit-content;
+    }
+
+    .navLink,
+    .navLogout {
+        color: #111;
+        background: #f70f0f;
+        padding: 5px;
+        color: #fff;
+        width: 100%;
+        border-radius: 6px;
+    }
+
+    .searchForm {
+        display: none;
+    }
+
+    .navOptions>ul {
+        border: none;
+    }
+
+    .hideNav {
+        left: -100%;
+        transition: all 0.5s ease-in-out;
+    }
 }
