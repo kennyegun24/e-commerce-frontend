@@ -1,7 +1,7 @@
 import './App.css';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import Nav from './components/pages/Nav';
 import Home from './components/pages/Home';
@@ -14,14 +14,17 @@ import StoreProd from './components/pages/StoreProd';
 const App = () => {
   const { currentUser } = useSelector(state => state.user)
 
+  const location = useLocation()
+
+  const getLocation = location.pathname
   return (
     <div className="app">
 
-      <div className='fixPositionNav'>
+      {(getLocation !== '/login' && getLocation !== '/register') && <div className='fixPositionNav'>
         <Nav />
-      </div>
+      </div>}
 
-      <div className='routes'>
+      <div className={getLocation === '/login' || getLocation === '/register' ? 'routes fullPage' : 'routes'}>
         <Routes>
           <Route path='/register' element={!currentUser ? <Register /> : <Navigate to='/' />} />
           <Route path='/login' element={!currentUser ? <Login /> : <Navigate to='/' />} />

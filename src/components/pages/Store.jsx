@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { Col, Row } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllStores } from '../../redux/store/store'
-import { FaHourglass } from 'react-icons/fa'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 
 const Store = () => {
   const dispatch = useDispatch()
@@ -11,22 +11,24 @@ const Store = () => {
   useEffect(() => {
     dispatch(getAllStores())
   }, [])
+  const history = useNavigate()
   return (
     <>
       {allStores.length < 1 ?
-        <p className="center"><FaHourglass className='rotate' />Loading...</p>
+        <div className="center"><p className='rotate' /></div>
         :
         (
           <div className='mainProductsDiv'>
-            <h2 className='red bold fntLg'>Stores</h2>
+            <AiOutlineArrowLeft style={{ background: '#111', color: '#fff' }} className='arrowBack' onClick={() => history('/')} />
+            <h2 className='prodStoreHead'>Stores</h2>
             <div className='subProductsDiv'>
               <Row gutters={[32, 32]} className='rand'>
                 {allStores.map((store) => {
-                  const states = store.product.map((individualStoreProduct) => individualStoreProduct)
+                  // const states = store.product.map((individualStoreProduct) => individualStoreProduct)
 
                   return (
-                    <Col xs={24} sm={12} lg={8} key={store.id}>
-                      <NavLink state={states} to={`/store/${store.id}/products`} className='productsDiv' >
+                    <Col xs={12} sm={12} lg={12} key={store.id}>
+                      <NavLink to={`/store/${store.id}/products`} className='productsDiv' >
                         <div className='prodLilImg'>
                           <img className='prodImg' src={store.image} alt="" />
                         </div>

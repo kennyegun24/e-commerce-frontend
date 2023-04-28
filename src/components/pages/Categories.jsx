@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { getAllCategories } from '../../redux/category/category'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'antd'
-import { NavLink } from 'react-router-dom'
-import { FaHourglass } from 'react-icons/fa'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 
 const Categories = () => {
   const dispatch = useDispatch()
@@ -11,13 +11,16 @@ const Categories = () => {
   useEffect(() => {
     dispatch(getAllCategories())
   }, [])
+  const history = useNavigate()
+
   return (
     <div>
       {categories.length < 1 ?
-        <p className="center"><FaHourglass className='rotate' />Loading...</p>
+        <div className="center"><p className='rotate' /></div>
         :
         (<div className='mainProductsDiv'>
-          <h2 className='red bold fntLg'>Categories</h2>
+          <AiOutlineArrowLeft style={{ background: '#111', color: '#fff' }} className='arrowBack' onClick={() => history('/')} />
+          <h2 className='prodStoreHead'>Categories</h2>
           <div className='subProductsDiv'>
             <Row gutters={[32, 32]} className='rand'>
               {
@@ -25,7 +28,7 @@ const Categories = () => {
                   const states = prod.product.map((hey) => hey)
 
                   return (
-                    <Col xs={24} sm={12} lg={12} key={prod.id}>
+                    <Col xs={12} sm={12} lg={12} key={prod.id}>
                       <NavLink state={states} to={`/categories/${prod.id}/products`} className='productsDiv' >
                         <div className='prodLilImg'>
                           <img className='prodImg' src={prod.image} alt="" />
