@@ -89,12 +89,12 @@ const Cart = () => {
                       <p>${Math.ceil(product.total) + (product.products.length > 0 ? 20 : 0)}</p>
                     </div>
                   </div>
-                  <button className='checkoutBtn'>Checkout</button>
+                  <NavLink state={{ product: product.products, total: product.total }} to='/payment' className='checkoutBtn'>Checkout</NavLink>
                 </div>
               </>
             )}
       </div>
-    </div>
+    </div >
   )
 }
 

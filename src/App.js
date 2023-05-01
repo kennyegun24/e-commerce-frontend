@@ -10,6 +10,7 @@ import Cart from './components/pages/Cart';
 import Categories from './components/pages/Categories';
 import Store from './components/pages/Store';
 import StoreProd from './components/pages/StoreProd';
+import PaymentForm from './components/pages/PaymentForm/PaymentForm';
 
 const App = () => {
   const { currentUser } = useSelector(state => state.user)
@@ -32,6 +33,7 @@ const App = () => {
           <Route path='/product/:id' element={<Details />} />
           <Route path='/cart' element={currentUser ? <Cart /> : <Navigate to='/login' />} />
           <Route path='/stores' element={<Store />} />
+          <Route path='/payment' element={<PaymentForm />} />
           <Route path='/categories' element={<Categories />} />
           <Route path='/categories/:id/products/:id' element={<Details />} />
           <Route path='/store/:id/products/:id' element={<Details />} />
