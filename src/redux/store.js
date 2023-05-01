@@ -15,6 +15,7 @@ import productSlice from './product/product';
 import cartSlice from './cart/cart';
 import storeSlice from './store/store';
 import categorySlice from './category/category';
+import orderSlice from './order/order';
 import searchSlice from './search';
 
 const persistConfig = {
@@ -25,7 +26,6 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, userSlice)
 const persistedCartReducer = persistReducer(persistConfig, cartSlice)
-// const persistedReducer = persistReducer(persistConfig, userCartReducer)
 
 export const store = configureStore({
   reducer: {
@@ -34,7 +34,8 @@ export const store = configureStore({
     product: productSlice,
     store: storeSlice,
     category: categorySlice,
-    search: searchSlice
+    search: searchSlice,
+    orders: orderSlice
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
