@@ -10,14 +10,8 @@ const Payment = ({ setActiveStep, total }) => {
     const [checkCvv, setCheckCvv] = useState('')
     const dispatch = useDispatch()
 
-    // const { addressDetails } = useSelector((state) => state.orders)
-    // const { cardDetails } = useSelector((state) => state.orders)
     const { currentUser } = useSelector((state) => state.user)
-    // console.log(addressDetails)
-    // console.log(cardDetails)
-    // console.log(currentUser)
 
-    console.log(currentUser)
     const submit = () => {
         dispatch(detailsAdded({
             credit_card_cvv: checkCvv,
