@@ -59,7 +59,7 @@ const Payment = ({ setActiveStep, total }) => {
     return (
         <>
             <Typography variant='p' align='center' gutterBottom>Payment Details</Typography>
-            <div style={{ margin: 'auto', background: 'blue', width: '50px', height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '50%' }}>
+            <div style={{ margin: 'auto', background: 'blue', width: '50px', height: '50px', display: 'flex', padding: '2rem', justifyContent: 'center', alignItems: 'center', borderRadius: '50%' }}>
                 <h6 align='center' style={{ color: '#fff', padding: '0.5rem', fontSize: '16px' }} >${total}</h6>
             </div>
 

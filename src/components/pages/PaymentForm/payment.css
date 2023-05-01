@@ -4,7 +4,20 @@
     margin: auto;
 }
 
+.paymentContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #111144;
+    font-family: sans-serif
+}
+
 @media (min-width: 200px) and (max-width: 650px) {
+    .paymentContainer {
+        height: 95vh;
+    }
+
     .card {
         width: 90%;
         height: 80vh;

@@ -41,7 +41,7 @@ const PaymentForm = () => {
         (activeStep === 0 && <AddressForm setActiveStep={setActiveStep} />) || (activeStep === 1 && <Payment total={location.state.total} setActiveStep={setActiveStep} />) || (activeStep === 2 && <Confirmation setActiveStep={setActiveStep} orders={location.state.product} />)
     )
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alighItems: 'center', height: '95vh', backgroundColor: '#111144', fontFamily: 'sans-serif' }}>
+        <div className='paymentContainer' style={{}}>
 
             <Card className="card" sx={{ background: '#e3e3fc' }}>
                 <CardContent style={{ gap: '1rem', display: 'flex', flexDirection: 'column' }}>

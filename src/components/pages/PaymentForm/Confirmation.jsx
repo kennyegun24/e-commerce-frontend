@@ -34,7 +34,6 @@ const Confirmation = ({ orders, setActiveStep }) => {
             setActiveStep(3)
         } catch (error) {
             setSpinner(false)
-            setSuccess('Payment Successful')
             setFailure(error.message)
         }
     }
