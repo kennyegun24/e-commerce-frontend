@@ -75,7 +75,7 @@ const StoreProd = () => {
                 joinUrl === '/categories' ? oneCategory.map((prod, index) => {
                   const state = prod
                   const addItem = () => {
-                    dispatch(itemAdded({ id: uuid(), product: { state, price: prod.price * quantity }, quantity, price: prod.price * quantity }))
+                    dispatch(itemAdded({ id: uuid(), product: { ...state, price: prod.price * quantity }, quantity, price: prod.price * quantity }))
                   }
                   return (
                     <Col xs={12} sm={12} lg={8} key={prod.id}>

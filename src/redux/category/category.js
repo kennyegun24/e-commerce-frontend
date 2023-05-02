@@ -32,9 +32,10 @@ const categorySlice = createSlice({
       .addCase(getAllCategories.fulfilled, (state, action) => {
         const isFulfilled = state;
         isFulfilled.status = 'Fulfilled';
-        const dataJson = action.payload.data
-        const toJSON = JSON.parse(dataJson)
-        isFulfilled.categories = toJSON
+        // console.log(action.payload)
+        isFulfilled.categories = action.payload.data
+        // const toJSON = JSON.parse(dataJson)
+        // isFulfilled.categories = toJSON
       })
       .addCase(getCategory.fulfilled, (state, action) => {
         const isFulfilled = state;

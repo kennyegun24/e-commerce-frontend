@@ -1,0 +1,45 @@
+.card {
+    height: 70vh;
+    width: 70%;
+    margin: auto;
+}
+
+.paymentContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #111144;
+    font-family: sans-serif
+}
+
+@media (min-width: 200px) and (max-width: 650px) {
+    .paymentContainer {
+        height: 95vh;
+    }
+
+    .card {
+        width: 90%;
+        height: 80vh;
+    }
+
+    .spinner {
+        height: 50px;
+        width: 50px;
+        border: 2px solid blue;
+        border-right: 2px solid transparent;
+        border-radius: 50%;
+        animation: 1s rotate linear infinite;
+        margin: auto;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

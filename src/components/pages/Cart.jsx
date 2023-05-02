@@ -36,65 +36,67 @@ const Cart = () => {
             )
             :
             (
-              <>
+              <div className='randomClass'>
                 {<p style={{ height: '5vh', textAlign: 'center', fontSize: '2rem' }}>Cart</p>}
-                <div className='cartDisplaySmDv'>
-                  {product.products.map((cart) => {
-                    return (
-                      <div className='cartDisplay' key={cart.id} >
-                        <AiOutlineArrowLeft style={{ background: '#111', color: '#fff' }} className='arrowBack' onClick={() => history(-1)} />
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+                  <div className='cartDisplaySmDv'>
+                    {product.products.map((cart) => {
+                      return (
+                        <div className='cartDisplay' key={cart.id} >
+                          <AiOutlineArrowLeft style={{ background: '#111', color: '#fff' }} className='arrowBack' onClick={() => history(-1)} />
 
-                        <NavLink state={cart.product} to={`/product/${cart.product.id}`} className='flexCart'>
-                          <img src={cart.product.image} style={{ borderRadius: '12px', height: '75px', width: '75px' }} alt="" />
+                          <NavLink state={cart.product} to={`/product/${cart.product.id}`} className='flexCart'>
+                            <img src={cart.product.image} style={{ borderRadius: '12px', width: '75px', aspectRatio: '1/1' }} alt="" />
+                            <div>
+                              <h3 className='cartProdName'>
+                                {cart.product.name}
+                              </h3>
+                              <p>
+                                {cart.product.color}
+                              </p>
+                            </div>
+                          </NavLink>
+
                           <div>
-                            <h3 className='cartProdName'>
-                              {cart.product.name}
-                            </h3>
                             <p>
-                              {cart.product.color}
+                              ${cart.price}
+                            </p>
+                            <p>
+                              Qty: {cart.quantity}
                             </p>
                           </div>
-                        </NavLink>
 
-                        <div>
-                          <p>
-                            ${cart.price}
-                          </p>
-                          <p>
-                            Qty: {cart.quantity}
-                          </p>
+                          <FaTrash onClick={() => deleteCartItem(cart.id, cart.product.price)} />
                         </div>
-
-                        <FaTrash onClick={() => deleteCartItem(cart.id, cart.product.price)} />
-                      </div>
-                    )
-                  })}
-                </div>
-
-                <div className='checkout'>
-                  <h2 style={{ textAlign: 'center' }}>Payment Details</h2>
-                  <div>
-                    <div>
-                      <p>Items:</p>
-                      <p>${product.products.length > 0 ? Math.ceil(product.total) : 0}</p>
-                    </div>
-
-                    <div>
-                      <p>Shipping(incl. taxes):</p>
-                      <p>${product.products.length > 0 ? 20 : 0}</p>
-                    </div>
-
-                    <div>
-                      <p>Total: </p>
-                      <p>${Math.ceil(product.total) + (product.products.length > 0 ? 20 : 0)}</p>
-                    </div>
+                      )
+                    })}
                   </div>
-                  <button className='checkoutBtn'>Checkout</button>
+
+                  <div className='checkout'>
+                    <h2 style={{ textAlign: 'center' }}>Payment Details</h2>
+                    <div>
+                      <div>
+                        <p>Items:</p>
+                        <p>${product.products.length > 0 ? Math.ceil(product.total) : 0}</p>
+                      </div>
+
+                      <div>
+                        <p>Shipping(incl. taxes):</p>
+                        <p>${product.products.length > 0 ? 20 : 0}</p>
+                      </div>
+
+                      <div>
+                        <p>Total: </p>
+                        <p>${Math.ceil(product.total) + (product.products.length > 0 ? 20 : 0)}</p>
+                      </div>
+                    </div>
+                    <NavLink state={{ product: product.products, total: product.total }} to='/payment' className='checkoutBtn'>Checkout</NavLink>
+                  </div>
                 </div>
-              </>
+              </div>
             )}
       </div>
-    </div>
+    </div >
   )
 }
 
