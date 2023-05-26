@@ -235,4 +235,13 @@
     .successMessage {
         width: 50%;
     }
+
+    .addCart {
+        background: #111;
+        border: none;
+        color: #fff;
+        padding: 0.5rem;
+        width: auto;
+        font-size: 14px;
+    }
 }
